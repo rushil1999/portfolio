@@ -1,11 +1,31 @@
 import React from 'react';
 import SocialMediaSVGElement from '../socialMediaSVGElement';
 import { Card, Container, Stack } from '@mui/material';
-import { skillsCardBackgroundStyle } from '../../styles/skills';
+import { skillsCardBackgroundStyle, skillsSectionStyle } from '../../styles/skills';
 import { experienceTitleStyle } from '../../styles/experience';
 import SkillsSVGElement from '../skillsSVGElement';
+import { skillsInformation } from './utils/skillsInformation';
 
 const Skills = () => {
+
+  const getSkillsHTML = (skills) => {
+
+    const skillPointersHTML = skills.map((skill) => {
+      return (
+        <li>
+          <p>
+            {skill}
+          </p>
+        </li>
+      )
+    })
+    return (
+      <ul>
+        {skillPointersHTML}
+      </ul>
+    )
+  }
+
   return (
     <Card style={skillsCardBackgroundStyle}>
       <div style={experienceTitleStyle}>
@@ -15,29 +35,8 @@ const Skills = () => {
       </div>
       <Stack direction={"row"}>
         <Container maxWidth="md">
-          <div style={{ margin: 'auto', fontSize: 'xx-large', fontStyle: 'italic', padding: '15px', color: "#FFFFFF" }}>
-            <ul>
-              <li>
-                <p>
-                  Proficient in Full Stack development
-                </p>
-              </li>
-              <li>
-                <p>
-                  Good Experience with Technolohies like Node, Typescript, React, API Development
-                </p>
-              </li>
-              <li>
-                <p>
-                  Well-versed with CS Fundamentals
-                </p>
-              </li>
-              <li>
-                <p>
-                  Good Practice with Data Structures and Algorithms
-                </p>
-              </li>
-            </ul>
+          <div style={skillsSectionStyle}>
+            {getSkillsHTML(skillsInformation)}
           </div>
         </Container>
         <Container maxWidth="sm" style={{ padding: '15px' }}>

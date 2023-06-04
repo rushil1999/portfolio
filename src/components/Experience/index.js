@@ -8,7 +8,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent/TimelineOppositeContent';
-import { delay, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { companyCardExternalStyle, companyCardHoverStyle, experienceCardBackgroundStyle, experienceDateStyle, experienceTitleStyle } from '../../styles/experience';
 import TechStack from '../TechStack';
 import { companyDetails } from './utils/companyInformation';
