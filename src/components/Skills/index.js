@@ -1,5 +1,4 @@
 import React from 'react';
-import SocialMediaSVGElement from '../socialMediaSVGElement';
 import { Card, Container, Stack } from '@mui/material';
 import { skillsCardBackgroundStyle, skillsSectionStyle } from '../../styles/skills';
 import { experienceTitleStyle } from '../../styles/experience';

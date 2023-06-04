@@ -1,4 +1,4 @@
-import { Container, Stack } from '@mui/material';
+import { Button, Container, Stack } from '@mui/material';
 import React from 'react';
 import CodingSVGElement from '../codingSVGElement';
 import { peronalDetails } from './utils/personalDetails';
@@ -6,6 +6,9 @@ import { contentStyle, introductionCardBackngroundStyle } from '../../styles/int
 
 const Introduction = () => {
   const { name, summary } = peronalDetails;
+  const redirectToResumePage = () => {
+    window.open('https://rushil1999.github.io/portfolio/Resume.pdf', "_blank", "noreferrer");
+  }
   return (
     <div
       style={introductionCardBackngroundStyle}>
@@ -24,6 +27,9 @@ const Introduction = () => {
           </div>
         </Container>
       </Stack>
+      <div style={{ textAlign: 'center' }}>
+        <Button onClick={redirectToResumePage} size="large" variant="contained" color="secondary" >Resume</Button>
+      </div>
     </div >
   );
 
