@@ -1,17 +1,25 @@
-import { Accordion, AccordionDetails, AccordionSummary, Container, Stack } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Container, Stack, ThemeProvider, Typography, createTheme, responsiveFontSizes } from '@mui/material';
 import React from 'react';
 import influxdata from '../../assets/influxdata.png'
 import procureNetworks from '../../assets/procure.png'
 import shipmnts from '../../assets/Shipmnts.jpeg'
 import taashaTech from '../../assets/taashaTech.jpeg'
-import { accordianSummaryCardHeightStyle, accordianSummaryCardStyle, companyCardBackgroundStyle, companyLogoStyle, companyNameStyle } from '../../styles/company';
-const Company = ({ companyDetails }) => {
+import { companyCardBackgroundStyle, companyLogoStyle } from '../../styles/company';
+const Company = ({ companyDetails, setAccordianWidthState }) => {
+
+  let theme = createTheme({});
+  theme = responsiveFontSizes(theme);
   const { companyName, role, link, roleDescription } = companyDetails;
 
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+  const handleChange = () => (event, isExpanded) => {
+    const newAccordianWidthState = expanded ? '70%' : '90%';
+    console.log("Changed", expanded, newAccordianWidthState)
+
+    setAccordianWidthState(newAccordianWidthState);
+    setExpanded(!expanded);
+
   };
   const getCompanyLogo = (companyName) => {
     let companyLogoLink;
@@ -46,40 +54,47 @@ const Company = ({ companyDetails }) => {
   const getCompanyRoleDescription = () => {
     const roleDescriptionHTML = roleDescription.map((description) => {
       return (
-        <li>
+        <Typography
+          variant="subtitle1"
+        >
           {description}
-        </li>
+        </Typography>
       )
     })
     return (
-      <ol>
+      <Container sx={{ textAlign: 'left' }}>
         {roleDescriptionHTML}
-      </ol>
+      </Container>
     )
   }
   return (
 
-
-    <Accordion style={{ ...companyCardBackgroundStyle }} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-      <AccordionSummary>
-        <div style={accordianSummaryCardStyle}>
-          <img style={companyLogoStyle} src={getCompanyLogo(companyName)} alt={'company-logo'} />
-          <div style={accordianSummaryCardHeightStyle}>
-            <h2 style={companyNameStyle}>
-              {companyName}
-            </h2>
-            <h3 style={companyNameStyle}>
-              {role}
-            </h3>
-          </div>
-        </div>
-      </AccordionSummary>
-      <AccordionDetails style={{ textAlign: 'left' }}>
-        <div>
+    <ThemeProvider theme={theme}>
+      <Accordion style={{ ...companyCardBackgroundStyle }} expanded={expanded} onChange={handleChange()}>
+        <AccordionSummary>
+          <Container sx={{ height: '70%', textAlign: 'center' }}>
+            <img style={companyLogoStyle} src={getCompanyLogo(companyName)} alt={'company-logo'} />
+            <Container sx={{ height: '60%' }}>
+              <Typography
+                variant="h5"
+                sx={{ marginTop: '0px', marginBottom: '0px' }}
+              >
+                {companyName}
+              </Typography>
+              <Typography
+                variant="substiles"
+                sx={{ marginTop: '0px', marginBottom: '0px' }}
+              >
+                {role}
+              </Typography>
+            </Container>
+          </Container>
+        </AccordionSummary>
+        <AccordionDetails >
           {getCompanyRoleDescription()}
-        </div>
-      </AccordionDetails>
-    </Accordion >
+        </AccordionDetails>
+      </Accordion >
+    </ThemeProvider>
 
   )
 }

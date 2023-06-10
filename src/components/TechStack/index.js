@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Stack, Container } from '@mui/material';
 import React from 'react';
 
 
@@ -1676,9 +1676,11 @@ export const techStackByCompany = (companyName: string) => {
 const TechStack = ({ companyName, companyCardAlignment }) => {
   const techStackAligment = companyCardAlignment === 'left' ? 'right' : 'left';
   return (
-    <Stack style={{ justifyContent: `${techStackAligment}` }} direction={'row'}>
-      {techStackByCompany(companyName)}
-    </Stack>
+    <Container>
+      <Stack style={{ justifyContent: `${techStackAligment}` }} direction={'row'}>
+        {techStackByCompany(companyName)}
+      </Stack>
+    </Container>
   )
 }
 

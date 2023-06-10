@@ -12,5 +12,3 @@ export const experienceDateStyle = { fontSize: 'x-large', color: "#4dff4d" }
 export const experienceCardBackgroundStyle = {
   backgroundImage: `linear-gradient(${0}deg, ${'#402565 '}, ${'#30BE96'})`
 }
-
-export const experienceTitleStyle = { textAlign: 'center', fontSize: 'xx-large', fontStyle: 'italic', padding: '35px', color: "#FFFFFF" }
