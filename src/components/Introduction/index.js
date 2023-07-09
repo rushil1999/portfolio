@@ -1,51 +1,118 @@
-import { Button, Container, Grid, Stack, Typography, createTheme, responsiveFontSizes } from '@mui/material';
+import { Button, Container, Grid, Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
 import React from 'react';
 import CodingSVGElement from '../codingSVGElement';
 import { peronalDetails } from './utils/personalDetails';
-import { contentStyle, introductionCardBackngroundStyle } from '../../styles/introduction';
-import { ThemeProvider, breakpoints } from '@mui/system';
+import { introductionCardBackngroundStyle } from '../../styles/introduction';
+import { ThemeProvider } from '@mui/system';
+import { GitHub, LinkRounded, LinkedIn } from '@mui/icons-material';
+import { motion } from 'framer-motion';
+
 
 const Introduction = () => {
   const { name, summary } = peronalDetails;
   const redirectToResumePage = () => {
     window.open('https://rushil1999.github.io/portfolio/Resume.pdf', "_blank", "noreferrer");
   }
+  const redirectToGithub = () => {
+    window.open('https://github.com/rushil1999', "_blank", "noreferrer");
+  }
+  const redirectToLinkedin = () => {
+    window.open('https://linkedin.com/in/rushil1999', "_blank", "noreferrer");
+  }
+  const redirectToBlogpost = () => {
+    window.open('https://medium.com/@rushil1999.dev', "_blank", "noreferrer");
+  }
+
+  // const LightTooltip = styled(({ className, ...props }) => (
+  //   <Tooltip {...props} classes={{ popper: className }} />
+  // ))(({ theme }) => ({
+  //   [`& .${tooltipClasses.tooltip}`]: {
+  //     backgroundColor: theme.palette.common.white,
+  //     color: 'rgba(0, 0, 0, 0.87)',
+  //     boxShadow: theme.shadows[1],
+  //     fontSize: 11,
+  //   },
+  // }));
 
   let theme = createTheme({
   });
-  theme = responsiveFontSizes(theme)
+
+  theme = responsiveFontSizes(theme);
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+
   return (
     <ThemeProvider theme={theme}>
-      <div
-        style={introductionCardBackngroundStyle}>
-        <Typography
-          variant="h1"
-          noWrap={true}
-          align={'center'}
-          sx={{ fontFamily: 'cursive', fontStyle: 'italic', color: "#FFFFFF" }}
-        >
-          {name}
-        </Typography>;
+      <Grid container sx={introductionCardBackngroundStyle}>
+        <Grid item xs={12} md={12} lg={12}>
+          <Typography
+            variant="h1"
+            noWrap={true}
+            align={'center'}
+            sx={{ fontFamily: 'cursive', fontStyle: 'italic', color: "#FFFFFF" }}
+          >
+            {name}
+          </Typography>
+        </Grid>
         <Grid container>
           <Grid item xs={12} md={6}>
-            <Container maxWidth="sm" style={{ padding: '15px' }}>
-              <CodingSVGElement />
-            </Container>
+            <motion.div
+              initial={{ x: "-100%" }}
+              whileInView={{ x: "0%" }}
+              transition={{ duration: 1 }}
+            >
+              <Container maxWidth="sm" style={{ padding: '15px' }}>
+                <CodingSVGElement />
+              </Container>
+            </motion.div>
           </Grid>
           <Grid item md={6}>
-            <Container style={contentStyle} maxWidth="sm">
-              <Typography
-                variant="h4"
+            <Container sx={{
+              color: '#FFFFFF',
+              textAlign: 'center',
+              paddingTop: matches ? '100px' : '0px',
+              paddingBottom: matches ? '0px' : '40px'
+            }}
+              maxWidth="sm"
+            >
+              <motion.div
+                initial={{ x: "100%" }}
+                whileInView={{ x: "0%" }}
+                transition={{ duration: 1 }}
               >
-                {summary}
-              </Typography>
+                <Typography
+                  variant="h4"
+                >
+                  {summary}
+                </Typography>
+              </motion.div>
+
             </Container>
+            <motion.div
+              initial={{ x: "100%" }}
+              whileInView={{ x: "0%" }}
+              transition={{ duration: 1 }}
+            >
+              <Grid container sx={{ textAlign: 'center', paddingTop: '20px' }}>
+                <Grid item xs={12} md={12} lg={12}>
+                  <Button onClick={redirectToResumePage} size="large" variant="contained" color="secondary" >Resume</Button>
+                </Grid>
+                <Grid item xs={12} md={12} lg={12} sx={{ paddingTop: '25px', justifyContent: 'center' }} >
+                  <Button color='inherit' onClick={redirectToGithub}>
+                    <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                  </Button>
+                  <Button color='inherit' onClick={redirectToLinkedin}>
+                    <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                  </Button>
+                  <Button color='inherit' onClick={redirectToBlogpost}>
+                    <LinkRounded sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                  </Button>
+                </Grid>
+              </Grid>
+            </motion.div>
           </Grid>
+
         </Grid>
-        <Container style={{ textAlign: 'center' }}>
-          <Button onClick={redirectToResumePage} size="large" variant="contained" color="secondary" >Resume</Button>
-        </Container>
-      </div >
+      </Grid >
     </ThemeProvider >
   );
 

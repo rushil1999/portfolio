@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, Container, Grid, Stack, ThemeProvider, Typography, createTheme, responsiveFontSizes } from '@mui/material';
-import { skillsCardBackgroundStyle, skillsSectionStyle } from '../../styles/skills';
+import { Card, Container, Grid, ThemeProvider, Typography, createTheme, responsiveFontSizes } from '@mui/material';
+import { skillsCardBackgroundStyle, } from '../../styles/skills';
 import SkillsSVGElement from '../skillsSVGElement';
 import { skillsInformation } from './utils/skillsInformation';
-import CodingSVGElement from '../codingSVGElement';
+import { motion } from 'framer-motion';
 
 const Skills = () => {
 
@@ -42,11 +42,18 @@ const Skills = () => {
         </Typography>
         <Grid container >
           <Grid item md={6} alignItems={'center'}>
-            <Container sx={{ color: "#FFFFFF" }} maxWidth="sm" >
-              {getSkillsHTML(skillsInformation)}
-            </Container>
+            <motion.div
+              initial={{ y: '100%' }}
+              whileInView={{ y: "0%" }}
+              transition={{ duration: 1 }}
+            >
+              <Container sx={{ color: "#FFFFFF" }} maxWidth="sm" >
+                {getSkillsHTML(skillsInformation)}
+              </Container>
+            </motion.div>
           </Grid>
           <Grid item md={6} xs={12} alignItems={'center'}>
+
             <Container sx={{ padding: '15px' }}>
               <SkillsSVGElement />
             </Container>

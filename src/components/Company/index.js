@@ -5,7 +5,7 @@ import procureNetworks from '../../assets/procure.png'
 import shipmnts from '../../assets/Shipmnts.jpeg'
 import taashaTech from '../../assets/taashaTech.jpeg'
 import { companyCardBackgroundStyle, companyLogoStyle } from '../../styles/company';
-const Company = ({ companyDetails, setAccordianWidthState }) => {
+const Company = ({ companyDetails }) => {
 
   let theme = createTheme({});
   theme = responsiveFontSizes(theme);
@@ -14,10 +14,6 @@ const Company = ({ companyDetails, setAccordianWidthState }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = () => (event, isExpanded) => {
-    const newAccordianWidthState = expanded ? '70%' : '90%';
-    console.log("Changed", expanded, newAccordianWidthState)
-
-    setAccordianWidthState(newAccordianWidthState);
     setExpanded(!expanded);
 
   };
@@ -72,22 +68,20 @@ const Company = ({ companyDetails, setAccordianWidthState }) => {
     <ThemeProvider theme={theme}>
       <Accordion style={{ ...companyCardBackgroundStyle }} expanded={expanded} onChange={handleChange()}>
         <AccordionSummary>
-          <Container sx={{ height: '70%', textAlign: 'center' }}>
+          <Container sx={{ height: '80%', textAlign: 'center' }}>
             <img style={companyLogoStyle} src={getCompanyLogo(companyName)} alt={'company-logo'} />
-            <Container sx={{ height: '60%' }}>
-              <Typography
-                variant="h5"
-                sx={{ marginTop: '0px', marginBottom: '0px' }}
-              >
-                {companyName}
-              </Typography>
-              <Typography
-                variant="substiles"
-                sx={{ marginTop: '0px', marginBottom: '0px' }}
-              >
-                {role}
-              </Typography>
-            </Container>
+            <Typography
+              variant="h5"
+              sx={{ marginTop: '0px', marginBottom: '0px' }}
+            >
+              {companyName}
+            </Typography>
+            <Typography
+              variant="substiles"
+              sx={{ marginTop: '0px', marginBottom: '0px' }}
+            >
+              {role}
+            </Typography>
           </Container>
         </AccordionSummary>
         <AccordionDetails >

@@ -1,5 +1,5 @@
 import { Card, Container, Grid, ThemeProvider, Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Company from '../Company';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -18,8 +18,8 @@ export default function Experience() {
   })
 
   theme = responsiveFontSizes(theme)
-  const [accordianWidthState, setAccordianWidthState] = useState('70%');
   const matches = useMediaQuery(theme.breakpoints.up('md'));
+
   return (
     <ThemeProvider theme={theme}>
       <Card style={{ ...experienceCardBackgroundStyle }}>
@@ -30,59 +30,94 @@ export default function Experience() {
         >
           Experiences
         </Typography>
-        <Timeline position={matches ? 'alternate' : 'right'}>
-          {
-            companyDetails.map((company, index) => {
-              const { duration, companyName } = company;
-              let companyCardAlignmet = 'right';
-              if (index % 2 === 0) {
-                companyCardAlignmet = 'left'
-              }
-              if (matches === false) {
-                companyCardAlignmet = 'left';
-              }
-              return (
-                <ThemeProvider theme={theme}>
-                  <TimelineItem>
-                    <TimelineOppositeContent>
-                      <Grid>
-                        <Grid item xs={12}>
-                          <Typography
-                            variant={matches ? 'h5' : 'caption'}
-                            sx={{ color: "#4dff4d" }}
-                          >
-                            {duration}
-                          </Typography>
+        <Container>
+          <Timeline position={matches ? 'alternate' : 'right'}>
+            {
+              companyDetails.map((company, index) => {
+                const { duration, companyName } = company;
+                let companyCardAlignmet = 'right';
+                if (index % 2 === 0) {
+                  companyCardAlignmet = 'left'
+                }
+                if (matches === false) {
+                  companyCardAlignmet = 'left';
+                }
+                return (
+                  <ThemeProvider theme={theme}>
+                    <TimelineItem>
+
+                      <TimelineOppositeContent>
+                        <Grid container>
+                          <Grid item xs={12}>
+                            <motion.div
+                              initial={{ x: index % 2 === 0 ? "-100%" : '100%' }}
+                              whileInView={{ x: "0%" }}
+                              transition={{ duration: 1 }}
+                            >
+                              <Typography
+                                variant={matches ? 'h5' : 'caption'}
+                                sx={{ color: "#4dff4d", paddingRight: '15px' }}
+                              >
+                                {duration}
+                              </Typography>
+                            </motion.div>
+                          </Grid>
+                          {matches && (
+                            <motion.div
+                              initial={{ x: index % 2 === 0 ? "-100%" : '100%' }}
+                              whileInView={{ x: "0%" }}
+                              transition={{ duration: 1 }}
+                            >
+                              <Grid item xs={12}>
+                                <TechStack companyName={companyName} companyCardAlignment={companyCardAlignmet} />
+                              </Grid>
+                            </motion.div>
+
+                          )}
                         </Grid>
-                        <Grid item xs={12}>
-                          <TechStack companyName={companyName} companyCardAlignment={companyCardAlignmet} />
-                        </Grid>
-                      </Grid>
-                    </TimelineOppositeContent>
-                    <TimelineSeparator>
-                      <TimelineDot />
-                      <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                      <Container sx={{ width: accordianWidthState, padding: '15px', float: `${companyCardAlignmet}` }}>
+                      </TimelineOppositeContent>
+
+                      <TimelineSeparator>
+                        <TimelineDot />
+                        <TimelineConnector />
+                      </TimelineSeparator>
+
+                      <TimelineContent sx={{ width: '80%' }}>
                         <motion.div
                           whileHover={companyCardHoverStyle}
+                          initial={{ x: index % 2 === 0 ? "100%" : '-100%' }}
+                          whileInView={{ x: "0%" }}
+                          transition={{ duration: 1 }}
                         >
-                          <Company companyDetails={company} setAccordianWidthState={setAccordianWidthState} />
+                          <Company companyDetails={company} />
                         </motion.div>
-                      </Container>
-                    </TimelineContent>
-                  </TimelineItem>
-                </ThemeProvider>
-              )
-            })
-
-          }
-        </Timeline>
+                      </TimelineContent>
+                    </TimelineItem>
+                  </ThemeProvider>
+                )
+              })
+            }
+          </Timeline>
+        </Container>
       </Card >
     </ThemeProvider >
   );
 }
 
 
+// sx={{ float: `${companyCardAlignmet}` }}
 
+
+{/* <Grid container>
+                            <Grid item xs={12}>
+                              <Typography
+                                variant={'h5'}
+                                sx={{ color: "#4dff4d", paddingRight: '15px' }}
+                              >
+                                {duration}
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={12}>
+                              <TechStack companyName={companyName} companyCardAlignment={companyCardAlignmet} />
+                            </Grid>
+                          </Grid> */}

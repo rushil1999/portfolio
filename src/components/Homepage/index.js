@@ -14,7 +14,7 @@ const Homepage = () => {
       <Introduction />
       <Experience />
       <Skills />
-      <Contact />
+      {/* <Contact /> */}
 
 
 

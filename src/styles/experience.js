@@ -1,3 +1,6 @@
+import black from '../assets/black.jpeg';
+
+
 export const companyCardHoverStyle = {
   transition: { duration: 0.7 },
   border: 'solid',
@@ -10,5 +13,8 @@ export const companyCardExternalStyle = { width: '50%', padding: '15px' }
 export const experienceDateStyle = { fontSize: 'x-large', color: "#4dff4d" }
 
 export const experienceCardBackgroundStyle = {
-  backgroundImage: `linear-gradient(${0}deg, ${'#402565 '}, ${'#30BE96'})`
+  // backgroundImage: `linear-gradient(${0}deg, ${'#402565 '}, ${'#30BE96'})`
+  backgroundImage: `url(${black})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
 }

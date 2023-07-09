@@ -1,6 +1,6 @@
 export const companyDetails = [
   {
-    duration: 'Sept 2022 - Preset',
+    duration: 'Sep 2022 - Present',
     companyName: 'Procure Networks',
     role: 'Software Developer Intern',
     link: null,
@@ -13,7 +13,7 @@ export const companyDetails = [
     ]
   },
   {
-    duration: 'June 2022 - August 2022',
+    duration: 'Jun 2022 - Aug 2022',
     companyName: 'Influxdata',
     role: 'Engineering Intern',
     link: null,
@@ -26,7 +26,7 @@ export const companyDetails = [
     ]
   },
   {
-    duration: 'December 2020 - June 2021',
+    duration: 'Dec 2020 - Jun 2021',
     companyName: 'Shipmnts',
     role: 'Software Developer Intern',
     link: null,
@@ -42,7 +42,7 @@ export const companyDetails = [
     ]
   },
   {
-    duration: 'June 2020 - Sept 2020',
+    duration: 'Jun 2020 - Sep 2020',
     companyName: 'Taasha Technologies',
     role: 'Software Developer Intern',
     link: null,
