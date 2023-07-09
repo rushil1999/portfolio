@@ -1,5 +1,5 @@
 import { Card, Container, Grid, ThemeProvider, Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Company from '../Company';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -56,7 +56,7 @@ export default function Experience() {
                             >
                               <Typography
                                 variant={matches ? 'h5' : 'caption'}
-                                sx={{ color: "#4dff4d", paddingRight: '15px' }}
+                                sx={{ color: "#ffd89b", paddingRight: '15px' }}
                               >
                                 {duration}
                               </Typography>

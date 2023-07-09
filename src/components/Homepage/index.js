@@ -2,7 +2,7 @@ import React from 'react';
 import Introduction from '../Introduction';
 import Experience from '../Experience';
 import Contact from '../Contact';
-import Skills from '../Skills';
+import Overview from '../Skills';
 
 
 const Homepage = () => {
@@ -12,8 +12,10 @@ const Homepage = () => {
 
     }}>
       <Introduction />
+      <Overview />
       <Experience />
-      <Skills />
+
+
       {/* <Contact /> */}
 
 

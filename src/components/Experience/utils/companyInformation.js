@@ -42,7 +42,7 @@ export const companyDetails = [
     ]
   },
   {
-    duration: 'Jun 2020 - Sep 2020',
+    duration: 'Jan 2020 - Dec 2020',
     companyName: 'Taasha Technologies',
     role: 'Software Developer Intern',
     link: null,

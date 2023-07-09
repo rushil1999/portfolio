@@ -1,4 +1,4 @@
-import black from '../assets/black.jpeg';
+import spaceDesk from '../assets/space-desk.jpeg';
 
 // export const introductionCardBackngroundStyle = {
 //   paddingBottom: '20rem',
@@ -9,7 +9,7 @@ import black from '../assets/black.jpeg';
 export const introductionCardBackngroundStyle = {
   paddingBottom: '20rem',
   paddingTop: '2rem',
-  backgroundImage: `url(${black})`,
+  backgroundImage: `url(${spaceDesk})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 }

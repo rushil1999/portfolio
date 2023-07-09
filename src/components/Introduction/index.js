@@ -59,6 +59,7 @@ const Introduction = () => {
               initial={{ x: "-100%" }}
               whileInView={{ x: "0%" }}
               transition={{ duration: 1 }}
+              whileHover={{ scale: [null, 1.5, 1.4] }}
             >
               <Container maxWidth="sm" style={{ padding: '15px' }}>
                 <CodingSVGElement />
@@ -94,18 +95,40 @@ const Introduction = () => {
             >
               <Grid container sx={{ textAlign: 'center', paddingTop: '20px' }}>
                 <Grid item xs={12} md={12} lg={12}>
-                  <Button onClick={redirectToResumePage} size="large" variant="contained" color="secondary" >Resume</Button>
+                  <motion.div
+                    whileHover={{ scale: [null, 1.5, 1.4] }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Button onClick={redirectToResumePage} size="large" variant="contained" color="secondary" >Resume</Button>
+                  </motion.div>
                 </Grid>
                 <Grid item xs={12} md={12} lg={12} sx={{ paddingTop: '25px', justifyContent: 'center' }} >
-                  <Button color='inherit' onClick={redirectToGithub}>
-                    <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                  </Button>
-                  <Button color='inherit' onClick={redirectToLinkedin}>
-                    <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                  </Button>
-                  <Button color='inherit' onClick={redirectToBlogpost}>
-                    <LinkRounded sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                  </Button>
+                  <Grid container sx={{ justifyContent: 'center', paddingTop: '20px' }}>
+                    <motion.div
+                      whileHover={{ scale: [null, 1.5, 1.4] }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Button color='inherit' onClick={redirectToGithub}>
+                        <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: [null, 1.5, 1.4] }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Button color='inherit' onClick={redirectToLinkedin}>
+                        <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: [null, 1.5, 1.4] }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Button color='inherit' onClick={redirectToBlogpost}>
+                        <LinkRounded sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                      </Button>
+                    </motion.div>
+                  </Grid>
                 </Grid>
               </Grid>
             </motion.div>
