@@ -10,7 +10,6 @@ export const companyCardHoverStyle = {
 
 export const companyCardExternalStyle = { width: '50%', padding: '15px' }
 
-export const experienceDateStyle = { fontSize: 'x-large', color: "#4dff4d" }
 
 export const experienceCardBackgroundStyle = {
   // backgroundImage: `linear-gradient(${0}deg, ${'#402565 '}, ${'#30BE96'})`

@@ -1,92 +1,57 @@
-import React from 'react';
-import SocialMediaSVGElement from '../socialMediaSVGElement';
-import { Button, Card, Container, Grid, Stack, Typography, createTheme } from '@mui/material';
-import { contactCardBackgroundStyle } from '../../styles/contact';
-import { Email, GitHub, LinkOff, LinkedIn } from '@mui/icons-material';
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
-import { ThemeProvider, responsiveFontSizes, styled } from '@mui/material/styles';
+import React, { useCallback, useRef, useState } from 'react';
+import Globe from 'react-globe.gl';
 
 const Contact = () => {
+  const ARC_REL_LEN = 0.4; // relative to whole arc
+  const FLIGHT_TIME = 1000;
+  const NUM_RINGS = 3;
+  const RINGS_MAX_R = 5; // deg
+  const RING_PROPAGATION_SPEED = 5; // deg/sec
 
-  let theme = createTheme({});
-  theme = responsiveFontSizes(theme);
+  const [arcsData, setArcsData] = useState([]);
+  const [ringsData, setRingsData] = useState([]);
 
-  const redirectToGithub = () => {
-    window.open('https://github.com/rushil1999', "_blank", "noreferrer");
-  }
-  const redirectToLinkedin = () => {
-    window.open('https://linkedin.com/in/rushil1999', "_blank", "noreferrer");
-  }
-  const redirectToBlogpost = () => {
-    window.open('https://medium.com/@rushil1999.dev', "_blank", "noreferrer");
-  }
+  const prevCoords = useRef({ lat: 0, lng: 0 });
+  const emitArc = useCallback(({ lat: endLat, lng: endLng }) => {
+    const { lat: startLat, lng: startLng } = prevCoords.current;
+    prevCoords.current = { lat: endLat, lng: endLng };
 
+    // add and remove arc after 1 cycle
+    const arc = { startLat, startLng, endLat, endLng };
+    setArcsData(curArcsData => [...curArcsData, arc]);
+    setTimeout(() => setArcsData(curArcsData => curArcsData.filter(d => d !== arc)), FLIGHT_TIME * 2);
 
-  const LightTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.white,
-      color: 'rgba(0, 0, 0, 0.87)',
-      boxShadow: theme.shadows[1],
-      fontSize: 11,
-    },
-  }));
+    // add and remove start rings
+    const srcRing = { lat: startLat, lng: startLng };
+    setRingsData(curRingsData => [...curRingsData, srcRing]);
+    setTimeout(() => setRingsData(curRingsData => curRingsData.filter(r => r !== srcRing)), FLIGHT_TIME * ARC_REL_LEN);
+
+    // add and remove target rings
+    setTimeout(() => {
+      const targetRing = { lat: endLat, lng: endLng };
+      setRingsData((curRingsData) => [...curRingsData, targetRing]);
+      setTimeout(() => setRingsData(curRingsData => curRingsData.filter(r => r !== targetRing)), FLIGHT_TIME * ARC_REL_LEN);
+    }, FLIGHT_TIME);
+  }, []);
+
   return (
-    <ThemeProvider theme={theme}>
-      <Card style={contactCardBackgroundStyle}>
-        <Typography
-          variant="h2"
-          align='center'
-          sx={{ fontStyle: 'italic', padding: '35px', color: "#FFFFFF" }}
-        >
-          Contact Me
-        </Typography>
-
-        <Grid container>
-          <Grid item xs={12} md={6}>
-            <Container  >
-              <Stack>
-                <Grid item xs={12}  >
-                  <Container>
-                    <Typography
-                      variant="h4"
-                      align='center'
-                      sx={{ fontStyle: 'italic', color: "#FFFFFF" }}
-                    >
-                      You can reach out to me on.
-                    </Typography>
-                  </Container>
-                </Grid>
-                <Grid item xs={12} alignSelf={'center'}>
-                  <Container >
-                    <Stack style={{ padding: '50px' }} direction={"row"} spacing={3}>
-                      <Button color='inherit' onClick={redirectToGithub}>
-                        <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                      </Button>
-                      <LightTooltip title='shahrushil1999@gmail.com'>
-                        <Email sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                      </LightTooltip>
-                      <Button color='inherit' onClick={redirectToLinkedin}>
-                        <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                      </Button>
-                      <Button color='inherit' onClick={redirectToBlogpost}>
-                        <LinkOff sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-                      </Button>
-                    </Stack>
-                  </Container>
-                </Grid>
-              </Stack>
-            </Container>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Container sx={{ padding: '5px' }}>
-              <SocialMediaSVGElement />
-            </Container>
-          </Grid>
-        </Grid>
-      </Card>
-    </ThemeProvider >
+    
+  <Globe
+    globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+    onGlobeClick={emitArc}
+    arcsData={arcsData}
+    arcColor={() => 'darkOrange'}
+    arcDashLength={ARC_REL_LEN}
+    arcDashGap={2}
+    arcDashInitialGap={1}
+    arcDashAnimateTime={FLIGHT_TIME}
+    arcsTransitionDuration={0}
+    ringsData={ringsData}
+    ringColor={() => t => `rgba(255,100,50,${1 - t})`}
+    ringMaxRadius={RINGS_MAX_R}
+    ringPropagationSpeed={RING_PROPAGATION_SPEED}
+    ringRepeatPeriod={FLIGHT_TIME * ARC_REL_LEN / NUM_RINGS}
+  />
   );
 
 }
