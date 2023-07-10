@@ -1,21 +1,25 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.073c9b0a.css",
-    "main.js": "/portfolio/static/js/main.10cc9fd7.js",
+    "main.js": "/portfolio/static/js/main.2c502f24.js",
     "static/js/787.202b8111.chunk.js": "/portfolio/static/js/787.202b8111.chunk.js",
     "static/media/space-desk.jpeg": "/portfolio/static/media/space-desk.d09ce8cf72da680478a0.jpeg",
     "static/media/desk-right.jpeg": "/portfolio/static/media/desk-right.685296bfafdb21fc8cb9.jpeg",
     "static/media/black.jpeg": "/portfolio/static/media/black.62c7bdad34af7b8e3e1f.jpeg",
+    "static/media/mobile.jpeg": "/portfolio/static/media/mobile.28eabb784de96a1eefb2.jpeg",
+    "static/media/user.jpeg": "/portfolio/static/media/user.cd30d4c0bdaa0f498d0e.jpeg",
+    "static/media/desk-all.jpeg": "/portfolio/static/media/desk-all.8e53eff53bb6834169a5.jpeg",
+    "static/media/skyline.jpeg": "/portfolio/static/media/skyline.9dda3ec953a0b46447e9.jpeg",
     "static/media/procure.png": "/portfolio/static/media/procure.1594ebf3d601cdd3f676.png",
     "static/media/taashaTech.jpeg": "/portfolio/static/media/taashaTech.56b371b5410891e719bb.jpeg",
     "static/media/logo.svg": "/portfolio/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/portfolio/index.html",
     "main.073c9b0a.css.map": "/portfolio/static/css/main.073c9b0a.css.map",
-    "main.10cc9fd7.js.map": "/portfolio/static/js/main.10cc9fd7.js.map",
+    "main.2c502f24.js.map": "/portfolio/static/js/main.2c502f24.js.map",
     "787.202b8111.chunk.js.map": "/portfolio/static/js/787.202b8111.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.10cc9fd7.js"
+    "static/js/main.2c502f24.js"
   ]
 }
