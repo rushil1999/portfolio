@@ -66,7 +66,7 @@ export default function Experience() {
                             <motion.div
                               initial={{ x: index % 2 === 0 ? "-100%" : '100%' }}
                               whileInView={{ x: "0%" }}
-                              transition={{ duration: 1 }}
+                              transition={{ duration: 1.5 }}
                             >
                               <Grid item xs={12}>
                                 <TechStack companyName={companyName} companyCardAlignment={companyCardAlignmet} />
@@ -84,10 +84,10 @@ export default function Experience() {
 
                       <TimelineContent sx={{ width: '80%' }}>
                         <motion.div
-                          whileHover={companyCardHoverStyle}
-                          initial={{ x: index % 2 === 0 ? "100%" : '-100%' }}
-                          whileInView={{ x: "0%" }}
-                          transition={{ duration: 1 }}
+                        // whileHover={companyCardHoverStyle}
+                        // initial={{ x: index % 2 === 0 ? "100%" : '-100%' }}
+                        // whileInView={{ x: "0%" }}
+                        // transition={{ duration: 1.5 }}
                         >
                           <Company companyDetails={company} />
                         </motion.div>
