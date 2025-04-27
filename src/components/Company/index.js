@@ -81,14 +81,20 @@ const Company = ({ companyDetails }) => {
           <Container sx={{ height: '80%', textAlign: 'center' }}>
             <img style={companyLogoStyle} src={getCompanyLogo(companyName)} alt={'company-logo'} />
             <Typography
-              variant="h5"
-              sx={{ marginTop: '0px', marginBottom: '0px' }}
+              variant="h4"
+              sx={{ marginTop: '0px', marginBottom: '0px',
+              background: "linear-gradient(90deg, #283e51, #485563)",
+              fontFamily: "bold",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent", 
+              fontWeight: 'fontWeightLight' 
+            }}
             >
               {companyName}
             </Typography>
             <Typography
-              variant="substiles"
-              sx={{ marginTop: '0px', marginBottom: '0px' }}
+              variant="h6"
+              sx={{ marginTop: '0px', marginBottom: '0px', fontFamily: "bold" }}
             >
               {role}
             </Typography>

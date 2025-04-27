@@ -39,7 +39,14 @@ const Project = () => {
       <Typography
         variant="h2"
         align='center'
-        sx={{ fontStyle: 'italic', padding: '35px', color: "#000000" }}
+        sx={{ fontFamily: 'cursive', 
+        fontStyle: 'bold', 
+        padding: '35px',
+        background: "linear-gradient(90deg, #283e51, #485563)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent", 
+        fontWeight: 'fontWeightLight'
+     }}
       >
         Projects
       </Typography>

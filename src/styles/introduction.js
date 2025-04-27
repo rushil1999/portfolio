@@ -8,7 +8,7 @@ import sky from '../assets/grid.jpeg';
 // }
 
 export const introductionCardBackngroundStyle = {
-  paddingBottom: '20rem',
+  paddingBottom: '10rem',
   paddingTop: '2rem',
   backgroundImage: `url(${sky})`,
   backgroundSize: 'cover',

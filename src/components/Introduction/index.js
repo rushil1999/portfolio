@@ -54,7 +54,14 @@ const Introduction = () => {
             variant="h1"
             noWrap={true}
             align={'center'}
-            sx={{ fontFamily: 'cursive', fontStyle: 'italic', color: "#000000" }}
+            sx={{ 
+              fontFamily: 'cursive', 
+              fontStyle: 'bold',
+              background: "linear-gradient(90deg, #283e51, #485563)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent", 
+              fontWeight: 'fontWeightLight', 
+            }}
           >
             {name}
           </Typography>
@@ -67,9 +74,9 @@ const Introduction = () => {
               transition={{ duration: 1 }}
               whileHover={{ scale: [null, 1.5, 1.4] }}
             > */}
-              <Container maxWidth="sm" style={{ padding: '65px' }}>
+              <Container maxWidth="sm" style={{ paddingTop: '65px' }}>
                 {/* <CodingSVGElement /> */}
-                <Card sx={{ borderRadius: 10 }}>
+                <Card sx={{ borderRadius: 5 }}>
                 <CardMedia
                 component="img"
                 height="650"
@@ -80,7 +87,7 @@ const Introduction = () => {
               </Container>
             {/* </motion.div> */}
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={5}>
             <Container sx={{
               color: '#000000',
               textAlign: 'center',
@@ -96,6 +103,7 @@ const Introduction = () => {
               >
                 <Typography
                   variant="h4"
+                  sx={{color: "#555555"}}
                 >
                   {summary}
                 </Typography>
@@ -107,7 +115,7 @@ const Introduction = () => {
               whileInView={{ x: "0%" }}
               transition={{ duration: 1 }}
             >
-              <Grid container sx={{ textAlign: 'center', paddingTop: '20px'}} spacing={2}>
+              <Grid container sx={{ textAlign: 'center', paddingTop: '60px'}} spacing={2}>
                 <Grid item xs={12} md={12} lg={12}>
                   <motion.div
                     whileHover={{ scale: [null, 1.5, 1.4] }}
