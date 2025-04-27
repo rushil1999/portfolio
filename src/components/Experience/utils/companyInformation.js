@@ -1,5 +1,28 @@
 export const companyDetails = [
   {
+    duration: 'Feb 2024 - Preset',
+    companyName: 'Tesla',
+    role: 'Software Development Engineer',
+    link: null,
+    roleDescription: [
+      '1. Designed Autosweep to clear out old data based on business requirements, saving 33% of Tesla Advisors time via Goroutines and Cron Jobs, configurable via SQL query without production releases for future changes',
+      '2. Engineered real-time email notification feature by programming cron jobs to poll data at regular intervals, and asynchronously send the email payload to necessary RabbitMQ queues for message transfer',
+      '3. Accomplished a 40% reduction in write errors, due to version conflict while writing documents in ElasticSearch by implementing retry mechanism with error handling, random jitters and async programming, using Goroutines',
+      '4. Enabled storing Database transactions in request context to avoid creating multiple transactions for every database call using Golang Context package, improving the CPU consumption by 20% and drastically reducing DB load',
+    ]
+  },
+  {
+    duration: 'Nov 2023 - Feb 2024',
+    companyName: 'Fetch Rewards',
+    role: 'Backend Engineer',
+    link: null,
+    roleDescription: [
+      '1. Scaling microservices that scan millions of user receipts, by implementing microservices and pipelines in Golang to check validations, item expiry, normalization, etc, and storing data in the Snowflake data lake',
+      '2. Managed migration of 314 GB data from AWS Elasticache to a compact version and DynamoDB, optimizing CPU utilization from 95% to 32% through effective fallback and feature flag implementation',
+      '3. Upgraded legacy endpoints to microservices, optimized data flow with AWS Lambda updates, and improved monitoring via Grafana and Elastic Beanstalk. Enhanced system agility, performance, and reliability'
+    ]
+  },
+  {
     duration: 'Sep 2022 - Present',
     companyName: 'Procure Networks',
     role: 'Software Developer Intern',

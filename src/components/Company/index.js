@@ -4,6 +4,8 @@ import influxdata from '../../assets/influxdata.png'
 import procureNetworks from '../../assets/procure.png'
 import shipmnts from '../../assets/Shipmnts.jpeg'
 import taashaTech from '../../assets/taashaTech.jpeg'
+import fetchReawards from '../../assets/fetch.png'
+import tesla from '../../assets/tesla.png'
 import { companyCardBackgroundStyle, companyLogoStyle } from '../../styles/company';
 const Company = ({ companyDetails }) => {
 
@@ -20,6 +22,14 @@ const Company = ({ companyDetails }) => {
   const getCompanyLogo = (companyName) => {
     let companyLogoLink;
     switch (companyName) {
+      case 'Tesla': {
+        companyLogoLink = tesla;
+        break;
+      }
+      case 'Fetch Rewards': {
+        companyLogoLink = fetchReawards;
+        break;
+      }
       case 'Influxdata': {
         companyLogoLink = influxdata;
         break;

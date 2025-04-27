@@ -39,7 +39,7 @@ const Project = () => {
       <Typography
         variant="h2"
         align='center'
-        sx={{ fontStyle: 'italic', padding: '35px', color: "#FFFFFF" }}
+        sx={{ fontStyle: 'italic', padding: '35px', color: "#000000" }}
       >
         Projects
       </Typography>

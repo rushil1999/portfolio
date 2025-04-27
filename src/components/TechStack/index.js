@@ -2,8 +2,9 @@ import { Stack, Container } from '@mui/material';
 import React from 'react';
 
 
-export const techStackByCompany = (companyName: string) => {
+export const techStackByCompany = (companyName) => {
   switch (companyName) {
+
     case 'Procure Networks': {
       return (<React.Fragment>
         <svg width="10%" height="10%" viewBox="0 0 261 260" fill="none" xmlns="http://www.w3.org/2000/svg">

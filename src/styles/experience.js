@@ -1,4 +1,6 @@
-import black from '../assets/black.jpeg';
+import black from '../assets/black-laptop.jpeg';
+import sky from '../assets/grid.jpeg';
+
 
 
 export const companyCardHoverStyle = {
@@ -13,7 +15,7 @@ export const companyCardExternalStyle = { width: '50%', padding: '15px' }
 
 export const experienceCardBackgroundStyle = {
   // backgroundImage: `linear-gradient(${0}deg, ${'#402565 '}, ${'#30BE96'})`
-  backgroundImage: `url(${black})`,
+  backgroundImage: `url(${sky})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 }

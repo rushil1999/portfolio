@@ -42,7 +42,7 @@ const ProjectCard = (props) => {
           alt="img"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" color="#ffffff">
+          <Typography gutterBottom variant="h5" component="div" color="#000000">
             {projectName}
           </Typography>
           <Typography variant="body2" color="text.primary">

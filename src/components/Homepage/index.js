@@ -13,7 +13,7 @@ const Homepage = () => {
 
     }}>
       <Introduction />
-      <Overview />
+      {/* <Overview /> */}
       <Experience />
       <Project />
       {/* <Contact /> */}

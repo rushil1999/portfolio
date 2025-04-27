@@ -1,9 +1,11 @@
 import black from '../assets/black.jpeg';
 import desk from '../assets/desk-right.jpeg';
+import sky from '../assets/grid.jpeg';
+
 
 export const skillsCardBackgroundStyle = {
   // backgroundImage: `linear-gradient(${0}deg, ${'#30BE96 '}, ${'#402565'})`,
-  backgroundImage: `url(${desk})`,
+  backgroundImage: `url(${sky})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 

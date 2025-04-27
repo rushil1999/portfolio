@@ -1,5 +1,5 @@
 export const companyCardBackgroundStyle = {
-  backgroundImage: `linear-gradient(${90}deg, ${'#bdc3c7'}, ${'#2c3e50'})`,
+  backgroundImage: `linear-gradient(${90}deg, ${'#f3e5f5'}, ${'#e3f2fd'})`,
 }
 
 

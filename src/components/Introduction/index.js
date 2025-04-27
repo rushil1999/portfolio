@@ -1,9 +1,11 @@
 import { Button, Container, Grid, Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
 import React from 'react';
 import CodingSVGElement from '../codingSVGElement';
+import self from '../../assets/suitup.jpg';
 import { peronalDetails } from './utils/personalDetails';
 import { introductionCardBackngroundStyle } from '../../styles/introduction';
 import { ThemeProvider } from '@mui/system';
+import { CardMedia, Card } from '@mui/material';
 import { GitHub, LinkRounded, LinkedIn } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
@@ -21,6 +23,10 @@ const Introduction = () => {
   }
   const redirectToBlogpost = () => {
     window.open('https://medium.com/@rushil1999.dev', "_blank", "noreferrer");
+  }
+
+  const redirectToLeetcodePage = () => {
+    window.open('https://leetcode.com/rushil1999/', "_blank", "noreferrer");
   }
 
   // const LightTooltip = styled(({ className, ...props }) => (
@@ -48,27 +54,35 @@ const Introduction = () => {
             variant="h1"
             noWrap={true}
             align={'center'}
-            sx={{ fontFamily: 'cursive', fontStyle: 'italic', color: "#FFFFFF" }}
+            sx={{ fontFamily: 'cursive', fontStyle: 'italic', color: "#000000" }}
           >
             {name}
           </Typography>
         </Grid>
         <Grid container>
           <Grid item xs={12} md={6}>
-            <motion.div
+            {/* <motion.div
               initial={{ x: "-100%" }}
               whileInView={{ x: "0%" }}
               transition={{ duration: 1 }}
               whileHover={{ scale: [null, 1.5, 1.4] }}
-            >
-              <Container maxWidth="sm" style={{ padding: '15px' }}>
-                <CodingSVGElement />
+            > */}
+              <Container maxWidth="sm" style={{ padding: '65px' }}>
+                {/* <CodingSVGElement /> */}
+                <Card sx={{ borderRadius: 10 }}>
+                <CardMedia
+                component="img"
+                height="650"
+                image={self}
+                alt="img"
+              />
+              </Card>
               </Container>
-            </motion.div>
+            {/* </motion.div> */}
           </Grid>
           <Grid item md={6}>
             <Container sx={{
-              color: '#FFFFFF',
+              color: '#000000',
               textAlign: 'center',
               paddingTop: matches ? '100px' : '0px',
               paddingBottom: matches ? '0px' : '40px'
@@ -93,15 +107,26 @@ const Introduction = () => {
               whileInView={{ x: "0%" }}
               transition={{ duration: 1 }}
             >
-              <Grid container sx={{ textAlign: 'center', paddingTop: '20px' }}>
+              <Grid container sx={{ textAlign: 'center', paddingTop: '20px'}} spacing={2}>
                 <Grid item xs={12} md={12} lg={12}>
                   <motion.div
                     whileHover={{ scale: [null, 1.5, 1.4] }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Button onClick={redirectToResumePage} size="large" variant="contained" color="secondary" >Resume</Button>
+                    <Button onClick={redirectToResumePage} size="large" variant="contained" sx={{color: "#ffffff"}} >Resume</Button>
                   </motion.div>
                 </Grid>
+                <Grid item xs={12} md={12} lg={12}>
+                  <motion.div
+                    whileHover={{ scale: [null, 1.5, 1.4] }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Button onClick={redirectToLeetcodePage} size="large" variant="contained" color="secondary" >DSA Journey</Button>
+                  </motion.div>
+                </Grid>
+                
+                
+
                 <Grid item xs={12} md={12} lg={12} sx={{ paddingTop: '25px', justifyContent: 'center' }} >
                   <Grid container sx={{ justifyContent: 'center', paddingTop: '20px' }}>
                     <motion.div
@@ -109,7 +134,7 @@ const Introduction = () => {
                       transition={{ duration: 0.3 }}
                     >
                       <Button color='inherit' onClick={redirectToGithub}>
-                        <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                        <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#000000' }} />
                       </Button>
                     </motion.div>
                     <motion.div
@@ -117,7 +142,7 @@ const Introduction = () => {
                       transition={{ duration: 0.3 }}
                     >
                       <Button color='inherit' onClick={redirectToLinkedin}>
-                        <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                        <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#000000' }} />
                       </Button>
                     </motion.div>
                     <motion.div
@@ -125,7 +150,7 @@ const Introduction = () => {
                       transition={{ duration: 0.3 }}
                     >
                       <Button color='inherit' onClick={redirectToBlogpost}>
-                        <LinkRounded sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
+                        <LinkRounded sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#000000' }} />
                       </Button>
                     </motion.div>
                   </Grid>

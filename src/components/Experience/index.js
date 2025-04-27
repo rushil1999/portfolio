@@ -26,7 +26,7 @@ export default function Experience() {
         <Typography
           variant="h2"
           align='center'
-          sx={{ fontStyle: 'italic', padding: '35px', color: "#FFFFFF" }}
+          sx={{ fontStyle: 'italic', padding: '35px', color: "#000000" }}
         >
           Experiences
         </Typography>
@@ -45,7 +45,6 @@ export default function Experience() {
                 return (
                   <ThemeProvider theme={theme}>
                     <TimelineItem>
-
                       <TimelineOppositeContent>
                         <Grid container>
                           <Grid item xs={12}>
@@ -56,7 +55,7 @@ export default function Experience() {
                             >
                               <Typography
                                 variant={matches ? 'h5' : 'caption'}
-                                sx={{ color: "#ffd89b", paddingRight: '15px' }}
+                                sx={{ color: "#000000", paddingRight: '15px' }}
                               >
                                 {duration}
                               </Typography>
@@ -78,8 +77,8 @@ export default function Experience() {
                       </TimelineOppositeContent>
 
                       <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
+                        <TimelineDot color="secondary"/>
+                        <TimelineConnector/>
                       </TimelineSeparator>
 
                       <TimelineContent sx={{ width: '80%' }}>
