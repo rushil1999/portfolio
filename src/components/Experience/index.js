@@ -64,11 +64,11 @@ export default function Experience() {
                                 variant={matches ? 'h5' : 'caption'}
                                 sx={{ 
                                   paddingRight: '15px' ,
-                                  fontFamily: "bold",
                                   background: "linear-gradient(90deg, #283e51, #485563)",
                                   WebkitBackgroundClip: "text",
                                   WebkitTextFillColor: "transparent", 
-                                  fontWeight: 'fontWeightLight'}}
+                                  fontWeight: 'bold'
+                                }}
                               >
                                 {duration}
                               </Typography>

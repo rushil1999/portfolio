@@ -19,6 +19,7 @@ const ProjectCard = (props) => {
       return (
         <Typography
           variant="subtitle1"
+          
         >
           {description}
         </Typography>
@@ -42,10 +43,20 @@ const ProjectCard = (props) => {
           alt="img"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" color="#000000">
+          <Typography gutterBottom variant="h4" component="div"
+            sx={{
+              fontstyle: "bold",
+            fontFamily:"cursive",
+            fontWeight: 'fontWeightLight',
+            background: "linear-gradient(90deg, #283e51, #485563)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent", 
+          }}
+          >
             {projectName}
           </Typography>
-          <Typography variant="body2" color="text.primary">
+          <Typography color="text.primary" 
+          >
             {getProjectSummary()}
           </Typography>
         </CardContent>
