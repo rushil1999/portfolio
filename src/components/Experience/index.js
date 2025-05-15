@@ -1,4 +1,4 @@
-import { Card, Container, Grid, ThemeProvider, Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
+import { Card, Container, Grid,  Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
 import React from 'react'
 import Company from '../Company';
 import Timeline from '@mui/lab/Timeline';
@@ -9,8 +9,6 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent/TimelineOppositeContent';
 import { motion } from 'framer-motion';
-import { companyCardHoverStyle, experienceCardBackgroundStyle } from '../../styles/experience';
-import TechStack from '../TechStack';
 import { companyDetails } from './utils/companyInformation';
 
 export default function Experience() {
@@ -21,8 +19,12 @@ export default function Experience() {
   const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <ThemeProvider theme={theme}>
-      <Card style={{ ...experienceCardBackgroundStyle }}>
+      <Card 
+        sx={{
+          backgroundColor: 'background.default',
+          color: 'text.primary'
+        }}
+      >
         <Typography
           variant="h2"
           align='center'
@@ -30,10 +32,10 @@ export default function Experience() {
             fontFamily: 'cursive', 
             fontStyle: 'bold', 
             padding: '35px',
-            background: "linear-gradient(90deg, #283e51, #485563)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent", 
-            fontWeight: 'fontWeightLight' }}
+            fontWeight: 'fontWeightLight',
+            color: 'text.primary'
+          }}
         >
           Experiences
         </Typography>
@@ -50,8 +52,7 @@ export default function Experience() {
                   companyCardAlignmet = 'left';
                 }
                 return (
-                  <ThemeProvider theme={theme}>
-                    <TimelineItem>
+                    <TimelineItem sx={{mt: 8}}>
                       <TimelineOppositeContent>
                         <Grid container>
                           <Grid item xs={12}>
@@ -64,28 +65,24 @@ export default function Experience() {
                                 variant={matches ? 'h5' : 'caption'}
                                 sx={{ 
                                   paddingRight: '15px' ,
-                                  background: "linear-gradient(90deg, #283e51, #485563)",
-                                  WebkitBackgroundClip: "text",
-                                  WebkitTextFillColor: "transparent", 
-                                  fontWeight: 'bold'
+                                  fontWeight: 'bold',
+                                  color: 'text.primary'
                                 }}
                               >
                                 {duration}
                               </Typography>
                             </motion.div>
+                            {/* <Typography
+                                variant={matches ? 'h5' : 'caption'}
+                                sx={{ 
+                                  paddingRight: '15px' ,
+                                  fontWeight: 'bold',
+                                  color: 'text.primary'
+                                }}
+                              >
+                                {duration}
+                              </Typography> */}
                           </Grid>
-                          {matches && (
-                            <motion.div
-                              initial={{ x: index % 2 === 0 ? "-100%" : '100%' }}
-                              whileInView={{ x: "0%" }}
-                              transition={{ duration: 1.5 }}
-                            >
-                              <Grid item xs={12}>
-                                <TechStack companyName={companyName} companyCardAlignment={companyCardAlignmet} />
-                              </Grid>
-                            </motion.div>
-
-                          )}
                         </Grid>
                       </TimelineOppositeContent>
 
@@ -94,25 +91,16 @@ export default function Experience() {
                         <TimelineConnector/>
                       </TimelineSeparator>
 
-                      <TimelineContent sx={{ width: '80%' }}>
-                        <motion.div
-                        // whileHover={companyCardHoverStyle}
-                        // initial={{ x: index % 2 === 0 ? "100%" : '-100%' }}
-                        // whileInView={{ x: "0%" }}
-                        // transition={{ duration: 1.5 }}
-                        >
-                          <Company companyDetails={company} />
-                        </motion.div>
+                      <TimelineContent>
+                        <Company companyDetails={company} />
                       </TimelineContent>
                     </TimelineItem>
-                  </ThemeProvider>
                 )
               })
             }
           </Timeline>
         </Container>
       </Card >
-    </ThemeProvider >
   );
 }
 

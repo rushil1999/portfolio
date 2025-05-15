@@ -1,5 +1,6 @@
 import React from 'react';
 import Introduction from '../Introduction';
+import IntroductionV2 from '../IntroductionV2';
 import Experience from '../Experience';
 import Contact from '../Contact';
 import Overview from '../Overview';

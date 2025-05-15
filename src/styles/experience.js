@@ -1,5 +1,5 @@
 import black from '../assets/black-laptop.jpeg';
-import sky from '../assets/grid.jpeg';
+import sky from '../assets/black.jpeg';
 
 
 

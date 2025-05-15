@@ -1,5 +1,5 @@
 import spaceDesk from '../assets/space-desk.jpeg';
-import sky from '../assets/grid.jpeg';
+import sky from '../assets/black.jpeg';
 
 // export const introductionCardBackngroundStyle = {
 //   paddingBottom: '20rem',
@@ -8,8 +8,8 @@ import sky from '../assets/grid.jpeg';
 // }
 
 export const introductionCardBackngroundStyle = {
-  paddingBottom: '10rem',
-  paddingTop: '2rem',
+  // paddingBottom: '10rem',
+  // paddingTop: '2rem',
   backgroundImage: `url(${sky})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',

@@ -1,6 +1,6 @@
 import black from '../assets/black.jpeg';
 import desk from '../assets/desk-right.jpeg';
-import sky from '../assets/grid.jpeg';
+import sky from '../assets/black.jpeg';
 
 
 export const skillsCardBackgroundStyle = {

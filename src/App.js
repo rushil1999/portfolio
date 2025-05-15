@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Homepage from './components/Homepage';
+import Introduction from './components/Introduction';
+import Experience from './components/Experience';
+import Project from './components/Projects';
 
 function App() {
   return (
@@ -21,7 +23,22 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Homepage></Homepage>
+    <div style={{
+      border: 'none'
+
+    }}>
+      <Introduction />
+      {/* <Overview /> */}
+      <Experience />
+      <Project />
+      {/* <Contact /> */}
+
+
+      {/* <Contact /> */}
+
+
+
+    </div>
   );
 }
 

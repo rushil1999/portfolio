@@ -34,7 +34,6 @@ const Overview = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
       <Card style={skillsCardBackgroundStyle}>
         <Typography
           variant="h2"
@@ -90,7 +89,6 @@ const Overview = () => {
           </motion.div>
         </Grid>
       </Card>
-    </ThemeProvider >
   );
 
 }

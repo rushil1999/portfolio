@@ -1,5 +1,5 @@
 import mess from '../assets/desk-all.jpeg';
-import sky from '../assets/grid.jpeg';
+import sky from '../assets/black.jpeg';
 
 
 

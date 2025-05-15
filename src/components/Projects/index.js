@@ -35,40 +35,48 @@ const Project = () => {
 
   return (
 
-    <Card style={{ ...projectCardBackgroundStyle }}>
+    <Card
+      sx={{
+        backgroundColor: 'background.default',
+        color: 'text.primary',
+        // paddingBottom: '20rem',
+      }}
+
+    >
       <Typography
         variant="h2"
         align='center'
-        sx={{ fontFamily: 'cursive', 
+        sx={{
         fontStyle: 'bold', 
         padding: '35px',
         background: "linear-gradient(90deg, #283e51, #485563)",
         WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent", 
-        fontWeight: 'fontWeightLight'
+        // WebkitTextFillColor: "transparent", 
+        fontWeight: 'fontWeightLight',
+        color: 'text.primary'
      }}
       >
         Projects
       </Typography>
-      <Grid container justifyContent="center" spacing={2} >
+      <Grid container direction="column" justifyContent="center" spacing={2} >
         {projectDetails.map((project, index) => {
           const { projectName, link, summary } = project;
           return (
 
-            <Grid item xs={12} sm={12} md={12} lg={4} sx={{ height: '60%' }}>
+            <Grid item  >
 
-              <motion.div
+              {/* <motion.div
                 initial={{ y: '100%' }}
                 whileInView={{ y: "0%" }}
                 transition={{ duration: index + 0.5 }}
-              >
+              > */}
                 <ProjectCard
                   projectName={projectName}
                   link={link}
                   summary={summary}
                   imageLink={getProjectImageLinkBasedOnName(projectName)}
                 />
-              </motion.div>
+              {/* </motion.div> */}
             </Grid>
 
           );
