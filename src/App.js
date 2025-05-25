@@ -2,8 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import Introduction from './components/Introduction';
+import IntroductionV2 from './components/IntroductionV2';
+// import Introduction from './components/Introduction';
 import Experience from './components/Experience';
 import Project from './components/Projects';
+import { Paper} from '@mui/material';
+
 
 function App() {
   return (
@@ -23,11 +27,8 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <div style={{
-      border: 'none'
-
-    }}>
-      <Introduction />
+    <Paper >
+      <IntroductionV2 />
       {/* <Overview /> */}
       <Experience />
       <Project />
@@ -38,7 +39,7 @@ function App() {
 
 
 
-    </div>
+    </Paper>
   );
 }
 

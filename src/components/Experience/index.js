@@ -1,4 +1,4 @@
-import { Card, Container, Grid,  Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
+import { Card, Container, Grid, Box,   Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
 import React from 'react'
 import Company from '../Company';
 import Timeline from '@mui/lab/Timeline';
@@ -10,32 +10,22 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent/TimelineOppositeContent';
 import { motion } from 'framer-motion';
 import { companyDetails } from './utils/companyInformation';
+import { useTheme } from '@emotion/react';
 
 export default function Experience() {
-  let theme = createTheme({
-  })
+  let theme = useTheme();
 
   theme = responsiveFontSizes(theme)
   const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-      <Card 
-        sx={{
-          backgroundColor: 'background.default',
-          color: 'text.primary'
-        }}
+      <Box
+        p={8}
       >
         <Typography
           variant="h2"
           align='center'
-          sx={{ 
-            fontFamily: 'cursive', 
-            fontStyle: 'bold', 
-            padding: '35px',
-            WebkitBackgroundClip: "text",
-            fontWeight: 'fontWeightLight',
-            color: 'text.primary'
-          }}
+          
         >
           Experiences
         </Typography>
@@ -72,16 +62,6 @@ export default function Experience() {
                                 {duration}
                               </Typography>
                             </motion.div>
-                            {/* <Typography
-                                variant={matches ? 'h5' : 'caption'}
-                                sx={{ 
-                                  paddingRight: '15px' ,
-                                  fontWeight: 'bold',
-                                  color: 'text.primary'
-                                }}
-                              >
-                                {duration}
-                              </Typography> */}
                           </Grid>
                         </Grid>
                       </TimelineOppositeContent>
@@ -100,7 +80,7 @@ export default function Experience() {
             }
           </Timeline>
         </Container>
-      </Card >
+      </Box >
   );
 }
 

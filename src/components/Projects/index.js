@@ -1,4 +1,4 @@
-import { Container, Grid, Card, Typography } from '@mui/material';
+import { Container, Grid, Card, Box, Typography, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import React from 'react'
 import { projectDetails } from './utils/projectDetails';
@@ -35,55 +35,37 @@ const Project = () => {
 
   return (
 
-    <Card
-      sx={{
-        backgroundColor: 'background.default',
-        color: 'text.primary',
-        // paddingBottom: '20rem',
-      }}
-
-    >
+    <Box>
       <Typography
         variant="h2"
         align='center'
         sx={{
-        fontStyle: 'bold', 
         padding: '35px',
-        background: "linear-gradient(90deg, #283e51, #485563)",
-        WebkitBackgroundClip: "text",
-        // WebkitTextFillColor: "transparent", 
-        fontWeight: 'fontWeightLight',
-        color: 'text.primary'
-     }}
-      >
+        p: 8
+     }}>
         Projects
       </Typography>
-      <Grid container direction="column" justifyContent="center" spacing={2} >
+      <Grid container 
+        direction="column" 
+        alignItems="center"
+        justifyContent="center" 
+        spacing={2} 
+      >
         {projectDetails.map((project, index) => {
           const { projectName, link, summary } = project;
           return (
-
-            <Grid item  >
-
-              {/* <motion.div
-                initial={{ y: '100%' }}
-                whileInView={{ y: "0%" }}
-                transition={{ duration: index + 0.5 }}
-              > */}
-                <ProjectCard
-                  projectName={projectName}
-                  link={link}
-                  summary={summary}
-                  imageLink={getProjectImageLinkBasedOnName(projectName)}
-                />
-              {/* </motion.div> */}
+            <Grid item>
+              <ProjectCard
+                projectName={projectName}
+                link={link}
+                summary={summary}
+                imageLink={getProjectImageLinkBasedOnName(projectName)}
+              />
             </Grid>
-
           );
         })}
-
       </Grid >
-    </Card >
+    </Box >
   );
 }
 
