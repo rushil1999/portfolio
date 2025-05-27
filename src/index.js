@@ -64,58 +64,51 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          // borderRadius: '8px',
-          // background: 'linear-gradient(to right, #00e5ff, #ff1744)',
-          // color: '#0d0d0d',
-          // fontWeight: 600,
-          // transition: 'all 0.3s ease-in-out',
-          // '&:hover': {
-          //   background: 'linear-gradient(to right, #ff1744, #00e5ff)',
-          //   boxShadow: '0 0 10px #ff1744, 0 0 20px #00e5ff',
-          // },
-          backgroundColor: '#222831',
-          color: '#00d4a0',
-          borderColor: '#00d4a055',
+          borderRadius: '10px',
+          padding: '8px 24px',
+          fontWeight: 500,
+          textTransform: 'none',
+          backgroundColor: 'rgba(0, 212, 160, 0.15)', // slightly brighter fill
+          color: '#aefcef', // lighter teal text
+          border: '1px solid rgba(0, 212, 160, 0.4)',
+          boxShadow: 'none',
+          transition: 'all 0.3s ease',
           '&:hover': {
-            backgroundColor: '#1a1f26',
-            borderColor: '#00d4a0',
-            boxShadow: '0 0 8px #00d4a088',
-          }
+            backgroundColor: 'rgba(0, 212, 160, 0.25)',
+            borderColor: '#00ffe0',
+            color: '#e0ffff',
+          },
         },
+    
       },
     },
     MuiCard: {
-      // styleOverrides: {
-      //   root: {
-      //     background: 'linear-gradient(145deg, #1a1a1a, #111)',
-      //     color: '#00d4a055',
-      //     border: '1px solid #333',
-      //     boxShadow: '0 0 10px #00f2ff33, 0 0 20px #00f2ff11',
-      //     borderRadius: '16px',
-      //     maxWidth: 400,
-      //     margin: 'auto',
-      //     transition: 'transform 0.3s ease',
-      //     '&:hover': {
-      //       transform: 'scale(1.03)',
-      //       boxShadow: '0 0 12px #00f2ff55, 0 0 24px #00f2ff22',
-      //     },
-      //   },
-      // },
       styleOverrides: {
         root: {
-          background: 'rgba(255, 255, 255, 0.03)', // Subtle dark glassy look
-          border: '1px solid #00d4a033',           // Soft teal border
+          background: 'linear-gradient(145deg, #1a1a1a, #222)',
+          border: '1px solid #2e2e2e',
           borderRadius: '16px',
-          boxShadow: '0 0 20px #00d4a022',         // Teal glow
-          backdropFilter: 'blur(6px)',             // Glassmorphism effect
+          boxShadow: '0 0 20px rgba(0, 212, 160, 0.2)',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           '&:hover': {
             transform: 'translateY(-4px)',
-            boxShadow: '0 0 30px #00d4a055',
-            border: '1px solid #00d4a055',
+            boxShadow: '0 0 30px rgba(0, 212, 160, 0.4)',
           },
         },
       },
+      // styleOverrides: {
+      //   root: {
+      //     background: 'linear-gradient(145deg, #1a1a1a, #222)',
+      //     border: '1px solid #2e2e2e',
+      //     borderRadius: '16px',
+      //     boxShadow: '0 0 20px rgba(255, 60, 56, 0.2)',
+      //     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+      //     '&:hover': {
+      //       transform: 'translateY(-4px)',
+      //       boxShadow: '0 0 30px rgba(255, 60, 56, 0.4)',
+      //     },
+      //   },
+      // },
       
     },
   },

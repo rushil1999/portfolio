@@ -46,10 +46,8 @@ const Project = () => {
         Projects
       </Typography>
       <Grid container 
-        direction="column" 
-        alignItems="center"
         justifyContent="center" 
-        spacing={2} 
+        spacing={4} 
       >
         {projectDetails.map((project, index) => {
           const { projectName, link, summary } = project;
@@ -72,31 +70,4 @@ const Project = () => {
 
 export default Project;
 
-{/* <Grid item>
-          <motion.div
-            whileHover={{ scale: [null, 1.5, 1.4] }}
-            transition={{ duration: 0.3 }}
-          >
-            <Button color='inherit' onClick={redirectToLinkedin}>
-              <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: '#FFFFFF' }} />
-            </Button>
-          </motion.div>
-        </Grid> */}
-
-
-
-{/* <React.Fragment>
-            <Grid item>
-              <motion.div
-                whileHover={{ scale: [null, 1.5, 1.4] }}
-                transition={{ duration: 0.3 }}
-              >
-                <ProjectCard
-                  projectName={projectName}
-                  link={link}
-                  summary={summary}
-                />
-              </motion.div>
-            </Grid>
-          </React.Fragment> */}
 

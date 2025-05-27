@@ -14,27 +14,11 @@ const ProjectCard = (props) => {
     window.open(link, "_blank", "noreferrer");
   }
 
-  const getProjectSummary = () => {
-    const roleDescriptionHTML = summary.map((description) => {
-      return (
-        <Typography
-          variant="h6"
-        >
-          {description}
-        </Typography>
-      )
-    })
-    return (
-      <Container sx={{ textAlign: 'left' }}>
-        {roleDescriptionHTML}
-      </Container>
-    )
-  }
 
   return (
     <Grid
       container
-      spacing={6}
+      spacing={8}
       p={4}
       sx={{ maxWidth: '1200px' }}
     >

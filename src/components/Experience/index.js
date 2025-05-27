@@ -25,7 +25,6 @@ export default function Experience() {
         <Typography
           variant="h2"
           align='center'
-          
         >
           Experiences
         </Typography>
@@ -46,11 +45,6 @@ export default function Experience() {
                       <TimelineOppositeContent>
                         <Grid container>
                           <Grid item xs={12}>
-                            <motion.div
-                              initial={{ x: index % 2 === 0 ? "-100%" : '100%' }}
-                              whileInView={{ x: "0%" }}
-                              transition={{ duration: 1 }}
-                            >
                               <Typography
                                 variant={matches ? 'h5' : 'caption'}
                                 sx={{ 
@@ -61,13 +55,12 @@ export default function Experience() {
                               >
                                 {duration}
                               </Typography>
-                            </motion.div>
                           </Grid>
                         </Grid>
                       </TimelineOppositeContent>
 
                       <TimelineSeparator>
-                        <TimelineDot color="secondary"/>
+                        <TimelineDot sx={{backgroundColor: theme.palette.secondary.main}}/>
                         <TimelineConnector/>
                       </TimelineSeparator>
 
@@ -83,21 +76,3 @@ export default function Experience() {
       </Box >
   );
 }
-
-
-// sx={{ float: `${companyCardAlignmet}` }}
-
-
-{/* <Grid container>
-                            <Grid item xs={12}>
-                              <Typography
-                                variant={'h5'}
-                                sx={{ color: "#4dff4d", paddingRight: '15px' }}
-                              >
-                                {duration}
-                              </Typography>
-                            </Grid>
-                            <Grid item xs={12}>
-                              <TechStack companyName={companyName} companyCardAlignment={companyCardAlignmet} />
-                            </Grid>
-                          </Grid> */}
