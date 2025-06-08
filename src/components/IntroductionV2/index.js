@@ -1,6 +1,15 @@
-import { Card, Container, Grid, Box, CardMedia, Button, Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
+import { Card, 
+  Container, 
+  Grid, 
+  Box, 
+  CardMedia, 
+  Button, 
+  Typography, 
+  responsiveFontSizes, 
+  useMediaQuery,
+  Divider
+} from '@mui/material';
 import React from 'react'
-import { motion } from 'framer-motion';
 import { personalDetails } from './utils/personalDetails';
 import { useTheme } from '@emotion/react';
 import self from '../../assets/suitup.jpg';
@@ -38,17 +47,18 @@ export default function Experience() {
         width: "100%",   // full width     
         }}
       >
-        <Typography
-          variant="h1"
-          align='center'
-          sx={{ 
-            fontStyle: 'bold', 
-            padding: '35px',
-            mb:10,
-          }}
-        >
-          {name}
-        </Typography>
+        <Divider sx={{ padding: '35px', mb: 10}}>
+          <Typography
+            variant="h1"
+            align='center'
+            sx={{ 
+              fontStyle: 'bold', 
+              
+            }}
+          >
+            {name}
+          </Typography>
+        </Divider>
         <Container maxWidth="lg" sx={{ flexGrow: 1 }} alignItems="center">
         <Grid
           container

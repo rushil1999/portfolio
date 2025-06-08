@@ -10,7 +10,7 @@ export const projectDetails = [
     projectName: 'User Authentication Module',
     link: 'https://github.com/rushil1999/user-authentication',
     summary: [
-      'Developed and released open-source React components for developers to inject Login, Signup, and Protected URL services into any project, reducing development time by 20-25%',
+      'Developed and released open-source React components for developers to inject Login, Signup, and Protected URL services into any project, reducing development time by 20-25%\n',
       'Utilized useContext hook to solve the problem of retaining state information between parent and child components',
     ]
   },

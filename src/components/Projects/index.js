@@ -1,4 +1,4 @@
-import { Container, Grid, Card, Box, Typography, Paper } from '@mui/material';
+import { Divider, Grid, Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import React from 'react'
 import { projectDetails } from './utils/projectDetails';
@@ -36,15 +36,17 @@ const Project = () => {
   return (
 
     <Box>
-      <Typography
-        variant="h2"
-        align='center'
-        sx={{
-        padding: '35px',
-        p: 8
-     }}>
-        Projects
-      </Typography>
+      <Divider>
+        <Typography
+          variant="h2"
+          align='center'
+          sx={{
+          padding: '35px',
+          p: 8
+      }}>
+          Projects
+        </Typography>
+      </Divider>
       <Grid container 
         justifyContent="center" 
         spacing={4} 

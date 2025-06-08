@@ -1,4 +1,4 @@
-import { Card, Container, Grid, Box,   Typography, createTheme, responsiveFontSizes, useMediaQuery } from '@mui/material';
+import { Divider, Box, Typography, responsiveFontSizes, useMediaQuery } from '@mui/material';
 import React from 'react'
 import Company from '../Company';
 import Timeline from '@mui/lab/Timeline';
@@ -8,71 +8,85 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent/TimelineOppositeContent';
-import { motion } from 'framer-motion';
 import { companyDetails } from './utils/companyInformation';
 import { useTheme } from '@emotion/react';
 
 export default function Experience() {
   let theme = useTheme();
+  theme = responsiveFontSizes(theme);
 
-  theme = responsiveFontSizes(theme)
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  return (
-      <Box
-        p={8}
-      >
-        <Typography
-          variant="h2"
-          align='center'
-        >
-          Experiences
-        </Typography>
-        <Container>
-          <Timeline position={matches ? 'alternate' : 'right'}>
-            {
-              companyDetails.map((company, index) => {
-                const { duration, companyName } = company;
-                let companyCardAlignmet = 'right';
-                if (index % 2 === 0) {
-                  companyCardAlignmet = 'left'
-                }
-                if (matches === false) {
-                  companyCardAlignmet = 'left';
-                }
-                return (
-                    <TimelineItem sx={{mt: 8}}>
-                      <TimelineOppositeContent>
-                        <Grid container>
-                          <Grid item xs={12}>
-                              <Typography
-                                variant={matches ? 'h5' : 'caption'}
-                                sx={{ 
-                                  paddingRight: '15px' ,
-                                  fontWeight: 'bold',
-                                  color: 'text.primary'
-                                }}
-                              >
-                                {duration}
-                              </Typography>
-                          </Grid>
-                        </Grid>
-                      </TimelineOppositeContent>
+  return(
 
-                      <TimelineSeparator>
-                        <TimelineDot sx={{backgroundColor: theme.palette.secondary.main}}/>
-                        <TimelineConnector/>
-                      </TimelineSeparator>
+    <React.Fragment>
+      {!isMobile ? (
+        <Box p={8}>
+          <Divider>
+            <Typography variant="h2" align="center">
+              Experiences
+            </Typography>
+          </Divider>
 
-                      <TimelineContent>
-                        <Company companyDetails={company} />
-                      </TimelineContent>
-                    </TimelineItem>
-                )
-              })
-            }
+          <Timeline position={isMobile ? 'right' : 'alternate'}>
+            {companyDetails.map((company, index) => {
+              const { duration } = company;
+
+              return (
+                <TimelineItem key={index} sx={{ mt: 8 }}>
+                  {!isMobile && (
+                    <TimelineOppositeContent>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          paddingRight: '15px',
+                          fontWeight: 'bold',
+                          color: 'text.primary'
+                        }}
+                      >
+                        {duration}
+                      </Typography>
+                    </TimelineOppositeContent>
+                  )}
+
+                  <TimelineSeparator>
+                    <TimelineDot sx={{ backgroundColor: theme.palette.secondary.main }} />
+                    <TimelineConnector  />
+                  </TimelineSeparator>
+
+                  <TimelineContent>
+                      <Company companyDetails={company} />
+                  </TimelineContent>
+                </TimelineItem>
+              );
+            })}
           </Timeline>
-        </Container>
-      </Box >
-  );
+        </Box>
+      ): (
+        <Box p={4}>
+          <Divider>
+            <Typography variant="h4" align="center">
+              Experiences
+            </Typography>
+          </Divider>
+          <Box mt={4}>
+            {companyDetails.map((company, index) => (
+              <Box key={index} mb={4}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 'bold', mb: 1, color: theme.palette.primary.main }}
+                >
+                  {company.duration}
+                </Typography>
+                <Company companyDetails={company} />
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      )}
+
+    </React.Fragment>
+
+  )
 }
+
