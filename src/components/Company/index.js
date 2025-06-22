@@ -46,7 +46,6 @@ const Company = ({ companyDetails }) => {
       <CardContent
         sx={{
           display: 'flex',
-          alignItems: 'center',
           gap: 2,
         }}
       >

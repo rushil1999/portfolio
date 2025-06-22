@@ -41,7 +41,7 @@ export default function Experience() {
                         sx={{
                           paddingRight: '15px',
                           fontWeight: 'bold',
-                          color: 'text.primary'
+                          color: theme.palette.primary.secondary
                         }}
                       >
                         {duration}

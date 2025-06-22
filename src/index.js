@@ -5,9 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/system';
 import { createTheme } from '@mui/material';
+import { keyframes  } from '@emotion/react';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const pulse = keyframes`
+  0% { box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); }
+  100% { box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+`;
+
 let theme = createTheme({
   palette: {
     mode: 'dark',
@@ -64,52 +72,68 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '10px',
-          padding: '8px 24px',
-          fontWeight: 500,
-          textTransform: 'none',
-          backgroundColor: 'rgba(0, 212, 160, 0.15)', // slightly brighter fill
-          color: '#aefcef', // lighter teal text
-          border: '1px solid rgba(0, 212, 160, 0.4)',
-          boxShadow: 'none',
-          transition: 'all 0.3s ease',
+          // borderRadius: '10px',
+          // padding: '8px 24px',
+          // fontWeight: 500,
+          // textTransform: 'none',
+          // backgroundColor: 'rgba(0, 212, 160, 0.15)', // slightly brighter fill
+          // color: '#aefcef', // lighter teal text
+          // border: '1px solid rgba(0, 212, 160, 0.4)',
+          // boxShadow: 'none',
+          // transition: 'all 0.3s ease',
+          // '&:hover': {
+          //   backgroundColor: 'rgba(0, 212, 160, 0.25)',
+          //   borderColor: '#00ffe0',
+          //   color: '#e0ffff',
+          // },
+          background: 'linear-gradient(145deg, #1a1a1a, #222)',
+          border: '1px solid #2e2e2e',
+          borderRadius: '12px',
+          boxShadow: '0 0 12px rgba(0, 229, 255, 0.2)',
+          color: '#aefcef',
+          padding: '10px 30px',
+          letterSpacing: '0.05em',
+          fontFamily: 'Orbitron, Roboto, sans-serif',
+          fontWeight: 600,
+          textTransform: 'uppercase',
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease',
           '&:hover': {
-            backgroundColor: 'rgba(0, 212, 160, 0.25)',
-            borderColor: '#00ffe0',
-            color: '#e0ffff',
-          },
+            transform: 'translateY(-2px) scale(1.03)',
+            background: 'linear-gradient(145deg, #111, #333)',
+            boxShadow: '0 0 20px rgba(0, 229, 255, 0.5)',
+          }
         },
     
       },
     },
     MuiCard: {
       styleOverrides: {
+        // root: {
+        //   background: 'linear-gradient(145deg, #1a1a1a, #222)',
+        //   border: '1px solid #2e2e2e',
+        //   borderRadius: '16px',
+        //   boxShadow: '0 0 20px rgba(0, 212, 160, 0.2)',
+        //   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        //   '&:hover': {
+        //     transform: 'translateY(-4px)',
+        //     boxShadow: '0 0 30px rgba(0, 212, 160, 0.4)',
+        //   },
+        // },
         root: {
           background: 'linear-gradient(145deg, #1a1a1a, #222)',
           border: '1px solid #2e2e2e',
-          borderRadius: '16px',
-          boxShadow: '0 0 20px rgba(0, 212, 160, 0.2)',
+          borderRadius: '20px',
+          boxShadow: '0 0 20px rgba(0, 229, 255, 0.2)',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+          display: 'flex',
+          flexDirection: 'column',
           '&:hover': {
-            transform: 'translateY(-4px)',
-            boxShadow: '0 0 30px rgba(0, 212, 160, 0.4)',
+            transform: 'translateY(-6px) scale(1.02)',
+            boxShadow: '0 0 30px rgba(0, 229, 255, 0.5)',
+            animation: `${pulse} 2s infinite`,
           },
-        },
+        }
       },
-      // styleOverrides: {
-      //   root: {
-      //     background: 'linear-gradient(145deg, #1a1a1a, #222)',
-      //     border: '1px solid #2e2e2e',
-      //     borderRadius: '16px',
-      //     boxShadow: '0 0 20px rgba(255, 60, 56, 0.2)',
-      //     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-      //     '&:hover': {
-      //       transform: 'translateY(-4px)',
-      //       boxShadow: '0 0 30px rgba(255, 60, 56, 0.4)',
-      //     },
-      //   },
-      // },
-      
     },
   },
 });

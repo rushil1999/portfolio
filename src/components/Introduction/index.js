@@ -41,11 +41,10 @@ const Introduction = () => {
         {name}
         </Typography>
       </Box>
-      <Container maxWidth="lg" sx={{ flexGrow: 1 }} alignItems="center">
+      <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
         <Grid
           container
           spacing={8}
-          alignItems="flex-start"
           justifyContent="center"
         >
           <Grid item xs={12} md={5}>

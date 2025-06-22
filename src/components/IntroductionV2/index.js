@@ -17,7 +17,7 @@ import { GitHub, LinkRounded, LinkedIn } from '@mui/icons-material';
 
 
 
-export default function Experience() {
+export default function IntroductionV2({initiateVini, setIniateVini}) {
   let theme = useTheme();
 
   theme = responsiveFontSizes(theme)
@@ -40,6 +40,10 @@ export default function Experience() {
   const redirectToLeetcodePage = () => {
     window.open('https://leetcode.com/rushil1999/', "_blank", "noreferrer");
   }
+  const handlerInitiateVini = () => {
+    console.log(initiateVini, !initiateVini)
+    setIniateVini(!initiateVini);
+  }
   return (
       <Box
         sx={{
@@ -59,22 +63,21 @@ export default function Experience() {
             {name}
           </Typography>
         </Divider>
-        <Container maxWidth="lg" sx={{ flexGrow: 1 }} alignItems="center">
+        <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
         <Grid
           container
           spacing={8}
-          alignItems="flex-start"
           justifyContent="center"
         >
           <Grid item xs={12} md={5}>
             <Card sx={{ borderRadius: 20 }}>
               <CardMedia
-              component="img"
-              height="550"
-              image={self}
-              alt="img"
-            />
-          </Card>
+                component="img"
+                height="550"
+                image={self}
+                alt="img"
+              />
+            </Card>
           </Grid>
           <Grid item xs={12} md={7} sx={{margin: 'auto'}}>
             <Typography sx={{
@@ -91,6 +94,9 @@ export default function Experience() {
                 </Grid>
                 <Grid item xs={12} md={12} lg={12}>
                     <Button onClick={redirectToLeetcodePage} size="large" variant="contained" >DSA Journey</Button>
+                </Grid>
+                <Grid item xs={12} md={12} lg={12}>
+                    <Button onClick={handlerInitiateVini} size="large" variant="contained" >Vini Beta</Button>
                 </Grid>
                 <Grid 
                   item xs={12} md={12} lg={12} 

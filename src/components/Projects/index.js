@@ -54,7 +54,7 @@ const Project = () => {
         {projectDetails.map((project, index) => {
           const { projectName, link, summary } = project;
           return (
-            <Grid item>
+            <Grid item key={index}>
               <ProjectCard
                 projectName={projectName}
                 link={link}

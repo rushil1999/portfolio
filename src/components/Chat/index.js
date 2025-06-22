@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -6,29 +6,17 @@ import {
   IconButton,
   Paper,
   Divider,
+  responsiveFontSizes
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send'
+import CloseIcon from '@mui/icons-material/Close';
+import { useChatData } from '../../hooks/useChatData';
+import { useTheme } from '@emotion/react';
 
-const ChatBot = () => {
-  const [messages, setMessages] = useState([
-    { type: 'bot', text: 'Hi there! How can I help you today?' },
-  ]);
-  const [input, setInput] = useState('');
-
-  const handleSend = () => {
-    if (!input.trim()) return;
-    const newMessages = [...messages, { type: 'user', text: input }];
-    setMessages(newMessages);
-    setInput('');
-
-    // Simulate a bot response
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { type: 'bot', text: "I'm just a demo bot. 🤖" },
-      ]);
-    }, 500);
-  };
+const ChatBot = ({setInitiateVini}) => {
+  const {messages, input, setInput, chatResponse} = useChatData()
+  let theme = useTheme();
+  theme = responsiveFontSizes(theme);
 
   return (
     <Box sx={{ position: 'relative', height: '100vh' }}>
@@ -53,11 +41,24 @@ const ChatBot = () => {
             p: 2,
           }}
         >
+          {/* Close button */}
+          <IconButton
+            onClick={()=> {setInitiateVini(false)}}
+            sx={{
+              position: 'absolute',
+              top: 8,
+              left: 8,
+              color: '#aaa',
+              '&:hover': { color: '#fff' }
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
           <Typography
             variant="h6"
-            sx={{ color: '#00d4a0', textAlign: 'center', mb: 1 }}
+            sx={{ color: '#aefcef', textAlign: 'center', mb: 1 }}
           >
-            ChatBot
+            Vini
           </Typography>
 
           <Divider sx={{ background: '#444', mb: 2 }} />
@@ -72,20 +73,20 @@ const ChatBot = () => {
               pb: 1,
             }}
           >
-            {messages.map((msg, i) => (
+            {messages != null && messages.map((msg, i) => (
               <Box
                 key={i}
-                alignSelf={msg.type === 'user' ? 'flex-end' : 'flex-start'}
+                alignSelf={msg.user_type === 'user' ? 'flex-end' : 'flex-start'}
                 sx={{
-                  backgroundColor: msg.type === 'user' ? '#00d4a020' : '#333',
-                  color: '#fff',
+                  backgroundColor: msg.user_type === 'user' ? '#00d4a020' : '#333',
+                  color: msg.message_type != 'error' ? '#fff' : theme.palette.secondary.main,
                   px: 2,
                   py: 1,
                   borderRadius: 2,
                   maxWidth: '80%',
                 }}
               >
-                {msg.text}
+                {msg.message_text}
               </Box>
             ))}
           </Box>
@@ -99,14 +100,14 @@ const ChatBot = () => {
               placeholder="Type a message..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+              onKeyPress={(e)=>{ (e.key === 'Enter' || e.keyCode === 13) && chatResponse()}}
               sx={{
                 input: { color: '#fff' },
                 fieldset: { borderColor: '#555' },
                 mr: 1,
               }}
             />
-            <IconButton onClick={handleSend} color="primary">
+            <IconButton onClick={()=>chatResponse()} color="primary">
               <SendIcon />
             </IconButton>
           </Box>

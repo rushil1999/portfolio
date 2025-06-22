@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import IntroductionV2 from './components/IntroductionV2';
 // import Introduction from './components/Introduction';
 import Experience from './components/Experience';
@@ -10,12 +10,17 @@ import { Paper} from '@mui/material';
 
 
 function App() {
+
+  const [initiateVini, setInitiateVini] = useState(false)
   return (
     <Paper >
-      <IntroductionV2 />
+      <IntroductionV2 setIniateVini={setInitiateVini} initiateVini={initiateVini}/>
       <Experience/>
       <Project />
-      {/* <Chat/> */}
+      {initiateVini && (
+        <Chat setInitiateVini={setInitiateVini}/>
+      )}
+      
     </Paper>
   );
 }

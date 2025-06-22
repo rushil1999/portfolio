@@ -43,7 +43,7 @@ const Overview = () => {
           Overview
         </Typography>
         <Grid container >
-          <Grid item md={6} lg={6} alignItems={'center'}>
+          <Grid item md={6} lg={6}>
             <motion.div
               initial={{ x: '-100%' }}
               whileInView={{ x: "0%" }}
@@ -54,22 +54,6 @@ const Overview = () => {
               </Container>
             </motion.div>
           </Grid>
-          {/* <Grid item md={6} xs={12} alignItems={'center'}>
-
-            <motion.div
-              initial={{ x: '100%' }}
-              whileInView={{ x: "0%" }}
-              transition={{ duration: 1 }}
-              whileHover={{ scale: [null, 1.5, 1.4] }}
-
-            >
-              <Container sx={{ padding: '15px' }}>
-                <SkillsSVGElement />
-              </Container>
-            </motion.div>
-          </Grid> */}
-
-
         </Grid>
         <Grid container sx={{ justifyContent: 'center', paddingTop: '20px', paddingBottom: '100px' }}>
           <motion.div

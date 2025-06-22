@@ -3,7 +3,7 @@ export const projectDetails = [
     projectName: 'Buffalo After Sunset',
     link: 'https://github.com/rushil1999/255-Buffalo-After-Sunset',
     summary: [
-      'This project is based on crime data analysis of a city in New York state which is Buffalo. The dataset consists of the information related to the crimes that are happening in Buffalo city over the years. This project mainly to bring awareness to the people and the authorities of the Buffalo city on the crimes happening across the city by analyzing the crime data and drawing patterns from it. Visualizing the features in such a way that it is easy to understand the crime patterns and gain insightful information out of it'
+      'This project is based on crime data analysis of a city in New York state which is Buffalo. The dataset consists of the information related to the crimes that are happening in Buffalo city over the years. This project mainly to bring awareness to the people and the authorities of the Buffalo city on the crimes happening across the city by analyzing the crime data and drawing patterns from it.'
     ]
   },
   {
@@ -20,6 +20,13 @@ export const projectDetails = [
     summary: [
       'Developed an image classification project using Convolutional Neural Networks (CNN) machine learning model to accurately classify products based on images',
       'mplemented data pipeline and API integration to seamlessly pass classified product data to the service, enhancing the user experience and enabling effective product search'
+    ]
+  },
+  {
+    projectName: 'Kelp',
+    link: null,
+    summary: [
+      'Developed a RAG based chatbot using Grok for LLM and Fast API Python and Cohere for embeddings'
     ]
   },
 ]
