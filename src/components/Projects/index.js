@@ -52,13 +52,14 @@ const Project = () => {
         spacing={4} 
       >
         {projectDetails.map((project, index) => {
-          const { projectName, link, summary } = project;
+          const { projectName, link, summary, tags } = project;
           return (
             <Grid item key={index}>
               <ProjectCard
                 projectName={projectName}
                 link={link}
                 summary={summary}
+                tags={tags}
                 imageLink={getProjectImageLinkBasedOnName(projectName)}
               />
             </Grid>

@@ -96,7 +96,7 @@ export default function IntroductionV2({initiateVini, setIniateVini}) {
                     <Button onClick={redirectToLeetcodePage} size="large" variant="contained" >DSA Journey</Button>
                 </Grid>
                 <Grid item xs={12} md={12} lg={12}>
-                    <Button onClick={handlerInitiateVini} size="large" variant="contained" >Vini Beta</Button>
+                    <Button onClick={handlerInitiateVini} disabled={true} size="large" variant="contained" >Vini Beta</Button>
                 </Grid>
                 <Grid 
                   item xs={12} md={12} lg={12} 
