@@ -31,7 +31,7 @@ export const useChatData = () => {
       return;
     } 
     setInput('')
-    setMessages(prev => [...prev, { user_type: 'bot', message_text: input }])
+    setMessages(prev => [...prev, { user_type: 'user', message_text: input }])
 
     console.log("Session ID found in ChatResponse", sessionId, input)
     const myHeaders = new Headers();
@@ -52,7 +52,8 @@ export const useChatData = () => {
       body: raw,
       };
     const apiResponse = await fetch(url, requestOptions)
-    if (!apiResponse.ok) {
+    console.log("API Response", apiResponse)
+    if (!apiResponse.ok && apiResponse.status == 500) {
       setMessages(prev => [...prev, { user_type: 'bot', message_type: 'error', message_text: "Oops...Something went wrong. Sorry about that. Can you contact Rushil. I am sure he can fix this" }]);
       // throw new Error(`HTTP error! status: ${response.status}`);
     } else {
@@ -68,7 +69,7 @@ export const useChatData = () => {
 
   const storeChat = async (sessionId) => {
     const initiationMessage = {
-      "message_text": "Hello, I am Vini, Rushil's personal Chatbot. I'd be happy to answer any questions you have about his professional life. What can I help you with today",
+      "message_text": "Hello, I am Vini, Rushil's personal Chatbot. I'd be happy to answer any questions you have about his professional life. Just to let you know, he is still making me better. At this time, I can't remember much stuff and as we all know AI is just expensive 🥲. Having said that, what can I help you with today",
       "user_type": "bot",
       "session_id": sessionId
   };
@@ -106,7 +107,7 @@ export const useChatData = () => {
       headers: myHeaders,
       };
     const apiResponse = await fetch(url, requestOptions)
-    if (!apiResponse.ok) {
+    if (!apiResponse.ok && apiResponse.status == 500) {
       setMessages(prev => [...prev, { user_type: 'bot', message_type: 'error', message_text: "Oops...Something went wrong. Sorry about that. Can you contact Rushil. I am sure he can fix this" }]);
       // throw new Error(`HTTP error! status: ${response.status}`);
     } else {

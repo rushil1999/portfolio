@@ -96,7 +96,16 @@ export default function IntroductionV2({initiateVini, setIniateVini}) {
                     <Button onClick={redirectToLeetcodePage} size="large" variant="contained" >DSA Journey</Button>
                 </Grid>
                 <Grid item xs={12} md={12} lg={12}>
-                    <Button onClick={handlerInitiateVini} disabled={true} size="large" variant="contained" >Vini Beta</Button>
+                  <Button disabled={true} onClick={handlerInitiateVini} size="large" variant="contained">
+                    <Box display="flex" flexDirection="column" alignItems="center">
+                      <Typography variant="button" sx={{ fontSize: '1rem' }}>
+                        Vini
+                      </Typography>
+                      <Typography variant="caption" sx={{ fontSize: '0.75rem', opacity: 0.7 }}>
+                        Chatbot Coming Soon
+                      </Typography>
+                    </Box>
+                  </Button>
                 </Grid>
                 <Grid 
                   item xs={12} md={12} lg={12} 
