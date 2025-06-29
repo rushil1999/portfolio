@@ -3,9 +3,7 @@ import {
   Box, 
   Avatar, 
   Typography, 
-  responsiveFontSizes, 
   CardContent, 
-  useMediaQuery 
 } from '@mui/material';
 import React from 'react';
 import influxdata from '../../assets/influxdata.png'
@@ -14,12 +12,8 @@ import shipmnts from '../../assets/Shipmnts.jpeg'
 import taashaTech from '../../assets/taashaTech.jpeg'
 import fetchReawards from '../../assets/fetch.png'
 import tesla from '../../assets/tesla.png'
-import { useTheme } from '@emotion/react';
 
 const Company = ({ companyDetails }) => {
-  let theme = useTheme();
-  theme = responsiveFontSizes(theme);
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { companyName, role } = companyDetails;
 

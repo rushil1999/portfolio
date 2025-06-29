@@ -23,11 +23,11 @@ export const useChatData = () => {
   const chatResponse = async () => {
     const sessionId = getSessionId() 
 
-    if (!sessionId || sessionId.length == 0) {
+    if (!sessionId || sessionId.length === 0) {
       return;
     }
 
-    if (!input || (input && input.length == 0)){
+    if (!input || (input && input.length === 0)){
       return;
     } 
     setInput('')
@@ -44,7 +44,7 @@ export const useChatData = () => {
         "user_type": "user"
     });
 
-    const url = `${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/chat/response`
+    const url = `${process.env.REACT_APP_BACKEND_URL}/chat/response`
 
     const requestOptions = {
       method: "POST",
@@ -53,7 +53,7 @@ export const useChatData = () => {
       };
     const apiResponse = await fetch(url, requestOptions)
     console.log("API Response", apiResponse)
-    if (!apiResponse.ok && apiResponse.status == 500) {
+    if (!apiResponse.ok && apiResponse.status === 500) {
       setMessages(prev => [...prev, { user_type: 'bot', message_type: 'error', message_text: "Oops...Something went wrong. Sorry about that. Can you contact Rushil. I am sure he can fix this" }]);
       // throw new Error(`HTTP error! status: ${response.status}`);
     } else {
@@ -80,7 +80,7 @@ export const useChatData = () => {
 
     const raw = JSON.stringify(initiationMessage);
 
-    const url = `${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/chat/`
+    const url = `${process.env.REACT_APP_BACKEND_URL}/chat/`
 
     const requestOptions = {
       method: "POST",
@@ -100,14 +100,14 @@ export const useChatData = () => {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${process.env.REACT_APP_BACKEND_AUTHENTICATION_TOKEN}`);
 
-    const url = `${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/chat/${sessionId}`
+    const url = `${process.env.REACT_APP_BACKEND_URL}/chat/${sessionId}`
 
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
       };
     const apiResponse = await fetch(url, requestOptions)
-    if (!apiResponse.ok && apiResponse.status == 500) {
+    if (!apiResponse.ok && apiResponse.status === 500) {
       setMessages(prev => [...prev, { user_type: 'bot', message_type: 'error', message_text: "Oops...Something went wrong. Sorry about that. Can you contact Rushil. I am sure he can fix this" }]);
       // throw new Error(`HTTP error! status: ${response.status}`);
     } else {

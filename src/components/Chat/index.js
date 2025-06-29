@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -79,7 +79,7 @@ const ChatBot = ({setInitiateVini}) => {
                 alignSelf={msg.user_type === 'user' ? 'flex-end' : 'flex-start'}
                 sx={{
                   backgroundColor: msg.user_type === 'user' ? '#00d4a020' : '#333',
-                  color: msg.message_type != 'error' ? '#fff' : theme.palette.secondary.main,
+                  color: msg.message_type !== 'error' ? '#fff' : theme.palette.secondary.main,
                   px: 2,
                   py: 1,
                   borderRadius: 2,

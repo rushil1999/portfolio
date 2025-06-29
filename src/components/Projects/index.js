@@ -1,16 +1,13 @@
 import { Divider, Grid, Box, Typography } from '@mui/material';
-import { motion } from 'framer-motion';
 import React from 'react'
 import { projectDetails } from './utils/projectDetails';
 import ProjectCard from '../ProjectCard';
-import { projectCardBackgroundStyle } from '../../styles/projects'
 import skyline from '../../assets/skyline.jpeg';
 import user from '../../assets/user.jpeg';
 import mobile from '../../assets/mobile.jpeg';
 
 
 const Project = () => {
-
   const getProjectImageLinkBasedOnName = (projectName) => {
     let imageLink;
     switch (projectName) {
@@ -34,7 +31,6 @@ const Project = () => {
   }
 
   return (
-
     <Box>
       <Divider>
         <Typography

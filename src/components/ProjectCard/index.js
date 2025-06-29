@@ -1,13 +1,7 @@
 import React from 'react';
-import {  Card, CardMedia, Grid,  CardContent, Typography, responsiveFontSizes, Stack, Chip, Button } from '@mui/material';
-import { keyframes, useTheme  } from '@emotion/react';
+import {  Card, CardMedia, Grid,  CardContent, Typography, responsiveFontSizes, Chip, Button } from '@mui/material';
+import { useTheme  } from '@emotion/react';
 
-// Subtle glowing animation
-const pulse = keyframes`
-  0% { box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); }
-  100% { box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
-`;
 
 // Individual Project Card
 const ProjectCard = ({ imageLink, projectName, summary, tags, link }) => {
@@ -32,7 +26,7 @@ const ProjectCard = ({ imageLink, projectName, summary, tags, link }) => {
         </Typography>
         <Grid container  direction="row"  spacing={1}  p={1}>
           {tags != null && tags.length > 0 && tags.map((tag, index) => (
-            <Grid item>
+            <Grid item key={index}>
             <Chip
               key={index}
               label={tag}
