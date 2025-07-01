@@ -1,7 +1,7 @@
 export const projectDetails = [
   {
     projectName: 'Vini',
-    link: "https://github.com/rushil1999/rag-chatbot",
+    link: "https://medium.com/@rushil1999.dev/vini-a-retrieval-augmented-generation-personal-chatbot-7b90635b595e",
     tags: ["RAG", "Grok LLM", "MongoDB", "Cohere", "Fast API"],
     summary: [
       'A RAG based chatbot using Grok as LLM, Fast API for core logic, Cohere for embeddings and MongoDB for Vector Search. Medium Article coming soon. Vini will be activated soon'
