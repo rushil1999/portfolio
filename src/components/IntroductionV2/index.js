@@ -89,7 +89,7 @@ export default function IntroductionV2({initiateVini, setIniateVini}) {
                   strings: [summary],
                   autoStart: true,
                   loop: true,
-                  delay: 0.5
+                  delay: 40
                 }}
               />
             </Typography>
