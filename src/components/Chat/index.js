@@ -6,15 +6,17 @@ import {
   IconButton,
   Paper,
   Divider,
-  responsiveFontSizes
+  responsiveFontSizes,
+  CircularProgress
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send'
 import CloseIcon from '@mui/icons-material/Close';
 import { useChatData } from '../../hooks/useChatData';
 import { useTheme } from '@emotion/react';
+import {USER} from '../../constants/chatMessage'
 
 const ChatBot = ({setInitiateVini}) => {
-  const {messages, input, setInput, chatResponse} = useChatData()
+  const {messages, input, setInput, chatResponse, loading, loadingMessage} = useChatData()
   let theme = useTheme();
   theme = responsiveFontSizes(theme);
 
@@ -73,12 +75,13 @@ const ChatBot = ({setInitiateVini}) => {
               pb: 1,
             }}
           >
+            
             {messages != null && messages.map((msg, i) => (
               <Box
                 key={i}
-                alignSelf={msg.user_type === 'user' ? 'flex-end' : 'flex-start'}
+                alignSelf={msg.user_type === USER ? 'flex-end' : 'flex-start'}
                 sx={{
-                  backgroundColor: msg.user_type === 'user' ? '#00d4a020' : '#333',
+                  backgroundColor: msg.user_type === USER ? '#00d4a020' : '#333',
                   color: msg.message_type !== 'error' ? '#fff' : theme.palette.secondary.main,
                   px: 2,
                   py: 1,
@@ -89,6 +92,22 @@ const ChatBot = ({setInitiateVini}) => {
                 {msg.message_text}
               </Box>
             ))}
+            {loading && (
+              <React.Fragment>
+                {loadingMessage && loadingMessage.length > 0 && (
+                  <Typography
+                    variant="subtitle"
+                    sx={{ color: '#aefcef', textAlign: 'center', mb: 1 }}
+                  >
+                  {loadingMessage}
+                </Typography>
+                )}
+                
+                <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
+                  <CircularProgress size={20} color="inherit" />
+                </Box>
+            </React.Fragment>
+            )}
           </Box>
 
           <Divider sx={{ background: '#444', mt: 1 }} />
