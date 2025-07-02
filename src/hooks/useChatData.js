@@ -65,9 +65,9 @@ export const useChatData = () => {
       // throw new Error(`HTTP error! status: ${response.status}`);
     } else {
       const response = await apiResponse.json();
-      console.log("From Chat Response 1", response)
+      // console.log("From Chat Response 1", response)
       if (response && response.result && response.result && response.result.length > 0) {
-        console.log("From Chat Response 2", response.result[0].messages); // Process the data
+        // console.log("From Chat Response 2", response.result[0].messages); // Process the data
         setMessages(response.result[0].messages)
         setLoading(false)
         setLoadingMessage('')
@@ -84,7 +84,7 @@ export const useChatData = () => {
       "user_type": BOT,
       "session_id": sessionId
   };
-    console.log("Message to store", initiationMessage)
+    // console.log("Message to store", initiationMessage)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${process.env.REACT_APP_BACKEND_AUTHENTICATION_TOKEN}`);
@@ -103,6 +103,7 @@ export const useChatData = () => {
       setMessages(prev => [...prev, { user_type: 'bot', message_type: 'error', message_text: "Oops...Something went wrong. Sorry about that. Can you contact Rushil. I am sure he can fix this" }]);
       setLoading(false)
       setLoadingMessage('')
+      console.log('Got response unloading...', loadingMessage, loading )
       // throw new Error(`HTTP error! status: ${apiResponse.status}`);
     } else {
       setMessages(prev => [...prev, { user_type: 'bot', message_type: 'error', message_text: "Oops...Something went wrong. Sorry about that. Can you contact Rushil. I am sure he can fix this" }]);
@@ -132,7 +133,7 @@ export const useChatData = () => {
     } else {
       const response = await apiResponse.json();
       if (response && response.result && response.result && response.result.length > 0) {
-        console.log("From Chat Response 2", response.result[0].messages); // Process the data
+        // console.log("From Chat Response 2", response.result[0].messages); // Process the data
         setMessages(response.result[0].messages)
         setLoading(false)
       }
