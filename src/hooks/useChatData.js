@@ -126,6 +126,7 @@ export const useChatData = () => {
     const url = `${process.env.REACT_APP_BACKEND_URL}/chat/${sessionId}`
 
     setLoading(true)
+    setLoadingMessage(WAIT_MESSAGE)
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
@@ -141,7 +142,7 @@ export const useChatData = () => {
       setLoading(false)
       setLoadingMessage('')
       // throw new Error(`HTTP error! status: ${response.status}`);
-    } else if (!apiResponse.ok && apiResponse.status === 400) {
+    } else if (!apiResponse.ok && apiResponse.status === 404) {
       await storeChat(sessionId)
     } else if (apiResponse.ok){
       const response = await apiResponse.json();
