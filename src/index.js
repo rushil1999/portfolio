@@ -108,17 +108,6 @@ let theme = createTheme({
     },
     MuiCard: {
       styleOverrides: {
-        // root: {
-        //   background: 'linear-gradient(145deg, #1a1a1a, #222)',
-        //   border: '1px solid #2e2e2e',
-        //   borderRadius: '16px',
-        //   boxShadow: '0 0 20px rgba(0, 212, 160, 0.2)',
-        //   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        //   '&:hover': {
-        //     transform: 'translateY(-4px)',
-        //     boxShadow: '0 0 30px rgba(0, 212, 160, 0.4)',
-        //   },
-        // },
         root: {
           background: 'linear-gradient(145deg, #1a1a1a, #222)',
           border: '1px solid #2e2e2e',
