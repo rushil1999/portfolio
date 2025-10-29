@@ -5,6 +5,8 @@ import ProjectCard from '../ProjectCard';
 import skyline from '../../assets/skyline.jpeg';
 import user from '../../assets/user.jpeg';
 import mobile from '../../assets/mobile.jpeg';
+import ai_stream from '../../assets/ai-stream.jpeg';
+import vini from '../../assets/vini.jpeg';
 
 
 const Project = () => {
@@ -23,6 +25,14 @@ const Project = () => {
         imageLink = mobile
         break;
       }
+      case 'Glide': {
+        imageLink = ai_stream
+        break;
+      };
+      case 'Vini': {
+        imageLink = vini
+        break;
+      };
       default: {
         imageLink = user;
       }

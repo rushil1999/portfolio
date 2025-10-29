@@ -1,5 +1,13 @@
 export const projectDetails = [
   {
+    projectName: 'Glide',
+    link: "https://github.com/rushil1999/glide-backend",
+    tags: ["Redis Cache", "Grok LLM", "SSE", "HTTP Streaming", "Fast API"],
+    summary: [
+      'uilt a real-time AI chatbot using HTTP streaming, enabling continuous token-by-token responses from an LLM for a seamless conversational experience. Implemented efficient data flow and server optimization, reducing latency and improving scalability under concurrent user loads.'
+    ]
+  },
+  {
     projectName: 'Vini',
     link: "https://medium.com/@rushil1999.dev/vini-a-retrieval-augmented-generation-personal-chatbot-7b90635b595e",
     tags: ["RAG", "Grok LLM", "MongoDB", "Cohere", "Fast API"],
