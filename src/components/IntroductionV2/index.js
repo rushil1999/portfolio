@@ -1,138 +1,122 @@
-import { Card, 
-  Container, 
-  Grid, 
-  Box, 
-  CardMedia, 
-  Button, 
-  Typography, 
-  responsiveFontSizes, 
-  Divider
-} from '@mui/material';
-import React from 'react'
+import { Container, Grid, Box, Button, Typography, IconButton } from '@mui/material';
+import React from 'react';
 import { personalDetails } from './utils/personalDetails';
-import { useTheme } from '@emotion/react';
 import self from '../../assets/suitup.jpg';
-import { GitHub, LinkRounded, LinkedIn } from '@mui/icons-material';
-import Typewriter from 'typewriter-effect';
+import { GitHub, LinkedIn, ArticleOutlined } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 
-
-
-export default function IntroductionV2({initiateVini, setIniateVini}) {
-  let theme = useTheme();
-
-  theme = responsiveFontSizes(theme)
+export default function IntroductionV2({ initiateVini, setIniateVini }) {
   const { name, summary } = personalDetails;
 
-  const redirectToResumePage = () => {
-    window.open('https://rushil1999.github.io/portfolio/Resume.pdf', "_blank", "noreferrer");
-  }
-  const redirectToGithub = () => {
-    window.open('https://github.com/rushil1999', "_blank", "noreferrer");
-  }
-  const redirectToLinkedin = () => {
-    window.open('https://linkedin.com/in/rushil1999', "_blank", "noreferrer");
-  }
-  const redirectToBlogpost = () => {
-    window.open('https://medium.com/@rushil1999.dev', "_blank", "noreferrer");
-  }
+  const open = (url) => window.open(url, '_blank', 'noreferrer');
 
-  const redirectToLeetcodePage = () => {
-    window.open('https://leetcode.com/rushil1999/', "_blank", "noreferrer");
-  }
-  const handlerInitiateVini = () => {
-    setIniateVini(!initiateVini);
-  }
+  const links = {
+    resume: 'https://rushil1999.github.io/portfolio/Resume.pdf',
+    leetcode: 'https://leetcode.com/rushil1999/',
+    github: 'https://github.com/rushil1999',
+    linkedin: 'https://linkedin.com/in/rushil1999',
+    blog: 'https://medium.com/@rushil1999.dev',
+  };
+
   return (
-      <Box
-        sx={{
-        minHeight: '100vh',     
-        width: "100%",   // full width     
-        }}
-      >
-        <Divider sx={{ padding: '35px', mb: 10}}>
-          <Typography
-            variant="h1"
-            align='center'
-            sx={{ 
-              fontStyle: 'bold', 
-              
-            }}
-          >
-            {name}
-          </Typography>
-        </Divider>
-        <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={8}
-          justifyContent="center"
-        >
+    <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', py: 12 }}>
+      <Container maxWidth="lg">
+        <Grid container spacing={8} alignItems="center" justifyContent="center">
           <Grid item xs={12} md={5}>
-            <Card sx={{ borderRadius: 20 }}>
-              <CardMedia
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
+              <Box
                 component="img"
-                height="550"
-                image={self}
-                alt="img"
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={7} sx={{margin: 'auto'}}>
-            <Typography sx={{
-              textAlign: 'center', 
-              color: theme.palette.text.primary
-              
-            }} 
-            variant="h5">
-              <Typewriter
-                options={{
-                  strings: [summary],
-                  autoStart: true,
-                  loop: true,
-                  delay: 40
+                src={self}
+                alt={name}
+                sx={{
+                  width: '100%',
+                  borderRadius: 4,
+                  display: 'block',
+                  boxShadow: '0 30px 80px rgba(0, 0, 0, 0.6)',
+                  border: '1px solid',
+                  borderColor: 'divider',
                 }}
               />
-            </Typography>
-              <Grid item container sx={{ textAlign: 'center', paddingTop: '60px'}} spacing={2}>
-                <Grid item xs={12} md={12} lg={12}>
-                    <Button onClick={redirectToResumePage} size="large" variant="contained"  >Resume</Button>
-                </Grid>
-                <Grid item xs={12} md={12} lg={12}>
-                    <Button onClick={redirectToLeetcodePage} size="large" variant="contained" >DSA Journey</Button>
-                </Grid>
-                <Grid item xs={12} md={12} lg={12}>
-                  <Button onClick={handlerInitiateVini} size="large" variant="contained">
-                    <Box display="flex" flexDirection="column" alignItems="center">
-                      <Typography variant="button" sx={{ fontSize: '1rem' }}>
-                        Vini
-                      </Typography>
-                      <Typography variant="caption" sx={{ fontSize: '0.75rem', opacity: 0.7 }}>
-                        AI Personal Chatbot
-                      </Typography>
-                    </Box>
-                  </Button>
-                </Grid>
-                <Grid 
-                  item xs={12} md={12} lg={12} 
-                  sx={{ paddingTop: '25px', justifyContent: 'center' }} >
-                  <Grid container gap={4}sx={{ justifyContent: 'center', paddingTop: '20px'}}>
-                      <Button color='inherit' onClick={redirectToGithub}>
-                        <GitHub sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: 'text.primary' }} />
-                      </Button>
-                      <Button color='inherit' onClick={redirectToLinkedin}>
-                        <LinkedIn sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: 'text.primary' }} />
-                      </Button>
-                      <Button color='inherit' onClick={redirectToBlogpost}>
-                        <LinkRounded sx={{ fontSize: { xs: 40, sm: 40, md: 50, lg: 60 }, color: 'text.primary' }} />
-                      </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
+            </motion.div>
+          </Grid>
+
+          <Grid item xs={12} md={7}>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+            >
+              <Typography variant="h2" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
+                {name}
+              </Typography>
+              <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 500, mb: 3 }}>
+                Software Development Engineer
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ color: 'text.secondary', mb: 4, lineHeight: 1.85, maxWidth: 520 }}
+              >
+                {summary}
+              </Typography>
+
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
+                <Button variant="contained" size="large" onClick={() => open(links.resume)}>
+                  Resume
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => open(links.leetcode)}
+                  sx={{
+                    borderColor: 'divider',
+                    color: 'text.secondary',
+                    '&:hover': { borderColor: 'primary.main', color: 'primary.main', bgcolor: 'transparent' },
+                  }}
+                >
+                  DSA Journey
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => setIniateVini(!initiateVini)}
+                  sx={{
+                    borderColor: 'divider',
+                    color: 'text.secondary',
+                    '&:hover': { borderColor: 'primary.main', color: 'primary.main', bgcolor: 'transparent' },
+                  }}
+                >
+                  Ask Vini
+                </Button>
+              </Box>
+
+              <Box sx={{ display: 'flex', gap: 0.5 }}>
+                <IconButton
+                  onClick={() => open(links.github)}
+                  sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+                >
+                  <GitHub sx={{ fontSize: 26 }} />
+                </IconButton>
+                <IconButton
+                  onClick={() => open(links.linkedin)}
+                  sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+                >
+                  <LinkedIn sx={{ fontSize: 26 }} />
+                </IconButton>
+                <IconButton
+                  onClick={() => open(links.blog)}
+                  sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+                >
+                  <ArticleOutlined sx={{ fontSize: 26 }} />
+                </IconButton>
+              </Box>
+            </motion.div>
           </Grid>
         </Grid>
       </Container>
-      </Box >
+    </Box>
   );
 }
-
-

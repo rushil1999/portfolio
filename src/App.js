@@ -1,27 +1,33 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, Box } from '@mui/material';
+import theme from './theme';
 import IntroductionV2 from './components/IntroductionV2';
-// import Introduction from './components/Introduction';
 import Experience from './components/Experience';
 import Chat from './components/Chat';
 import Project from './components/Projects';
-import { Paper} from '@mui/material';
-
-
+import Navbar from './components/Navbar';
 
 function App() {
-
-  const [initiateVini, setInitiateVini] = useState(false)
+  const [initiateVini, setInitiateVini] = useState(false);
   return (
-    <Paper >
-      <IntroductionV2 setIniateVini={setInitiateVini} initiateVini={initiateVini}/>
-      <Experience/>
-      <Project />
-      {initiateVini && (
-        <Chat setInitiateVini={setInitiateVini}/>
-      )}
-      
-    </Paper>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box>
+        <Navbar />
+        <Box id="intro">
+          <IntroductionV2 setIniateVini={setInitiateVini} initiateVini={initiateVini} />
+        </Box>
+        <Box id="experience">
+          <Experience />
+        </Box>
+        <Box id="projects">
+          <Project />
+        </Box>
+        {initiateVini && <Chat setInitiateVini={setInitiateVini} />}
+      </Box>
+    </ThemeProvider>
   );
 }
 

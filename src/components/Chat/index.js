@@ -6,19 +6,15 @@ import {
   IconButton,
   Paper,
   Divider,
-  responsiveFontSizes,
-  CircularProgress
+  CircularProgress,
 } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send'
+import SendIcon from '@mui/icons-material/Send';
 import CloseIcon from '@mui/icons-material/Close';
 import { useChatData } from '../../hooks/useChatData';
-import { useTheme } from '@emotion/react';
-import {USER} from '../../constants/chatMessage'
+import { USER } from '../../constants/chatMessage';
 
-const ChatBot = ({setInitiateVini}) => {
-  const {messages, input, setInput, chatResponse, loading, loadingMessage} = useChatData()
-  let theme = useTheme();
-  theme = responsiveFontSizes(theme);
+const ChatBot = ({ setInitiateVini }) => {
+  const { messages, input, setInput, chatResponse, loading, loadingMessage } = useChatData();
 
   return (
     <Box sx={{ position: 'relative', height: '100vh' }}>
@@ -27,43 +23,51 @@ const ChatBot = ({setInitiateVini}) => {
           position: 'fixed',
           bottom: 24,
           right: 24,
-          zIndex: 9999, // make sure it stays on top
+          zIndex: 9999,
         }}
       >
         <Paper
-          elevation={4}
+          elevation={8}
           sx={{
             height: '80vh',
-            maxWidth: 500,
-            margin: 'auto',
+            width: { xs: 'calc(100vw - 48px)', sm: '480px' },
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: '#1e1e1e',
-            borderRadius: 2,
+            bgcolor: 'background.paper',
+            border: '1px solid',
+            borderColor: 'divider',
+            borderRadius: 3,
             p: 2,
+            overflow: 'hidden',
           }}
         >
-          {/* Close button */}
           <IconButton
-            onClick={()=> {setInitiateVini(false)}}
+            onClick={() => setInitiateVini(false)}
             sx={{
               position: 'absolute',
               top: 8,
               left: 8,
-              color: '#aaa',
-              '&:hover': { color: '#fff' }
+              color: 'text.secondary',
+              '&:hover': { color: 'text.primary' },
             }}
           >
-            <CloseIcon />
+            <CloseIcon fontSize="small" />
           </IconButton>
+
           <Typography
             variant="h6"
-            sx={{ color: '#aefcef', textAlign: 'center', mb: 1 }}
+            sx={{ color: 'primary.light', textAlign: 'center', mb: 0.5, fontWeight: 600 }}
           >
             Vini
           </Typography>
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', textAlign: 'center', display: 'block', mb: 1 }}
+          >
+            AI Personal Assistant
+          </Typography>
 
-          <Divider sx={{ background: '#444', mb: 2 }} />
+          <Divider sx={{ mb: 2 }} />
 
           <Box
             sx={{
@@ -73,20 +77,31 @@ const ChatBot = ({setInitiateVini}) => {
               flexDirection: 'column',
               gap: 1,
               pb: 1,
+              '&::-webkit-scrollbar': { width: 4 },
+              '&::-webkit-scrollbar-thumb': { bgcolor: 'divider', borderRadius: 2 },
             }}
           >
-            
-            {messages != null && messages.map((msg, i) => (
+            {messages?.map((msg, i) => (
               <Box
                 key={i}
                 alignSelf={msg.user_type === USER ? 'flex-end' : 'flex-start'}
                 sx={{
-                  backgroundColor: msg.user_type === USER ? '#00d4a020' : '#333',
-                  color: msg.message_type !== 'error' ? '#fff' : theme.palette.secondary.main,
+                  bgcolor:
+                    msg.user_type === USER
+                      ? 'rgba(45, 212, 191, 0.1)'
+                      : 'rgba(255, 255, 255, 0.04)',
+                  color: msg.message_type !== 'error' ? 'text.primary' : 'error.main',
                   px: 2,
                   py: 1,
                   borderRadius: 2,
                   maxWidth: '80%',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.65,
+                  border: '1px solid',
+                  borderColor:
+                    msg.user_type === USER
+                      ? 'rgba(45, 212, 191, 0.18)'
+                      : 'rgba(255, 255, 255, 0.05)',
                 }}
               >
                 {msg.message_text}
@@ -94,39 +109,41 @@ const ChatBot = ({setInitiateVini}) => {
             ))}
             {loading && (
               <React.Fragment>
-                {loadingMessage && loadingMessage.length > 0 && (
+                {loadingMessage?.length > 0 && (
                   <Typography
-                    variant="subtitle"
-                    sx={{ color: '#aefcef', textAlign: 'center', mb: 1 }}
+                    variant="caption"
+                    sx={{ color: 'text.secondary', textAlign: 'center' }}
                   >
-                  {loadingMessage}
-                </Typography>
+                    {loadingMessage}
+                  </Typography>
                 )}
-                
-                <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
-                  <CircularProgress size={20} color="inherit" />
+                <Box display="flex" justifyContent="center" mt={1}>
+                  <CircularProgress size={18} sx={{ color: 'primary.main' }} />
                 </Box>
-            </React.Fragment>
+              </React.Fragment>
             )}
           </Box>
 
-          <Divider sx={{ background: '#444', mt: 1 }} />
+          <Divider sx={{ mt: 1 }} />
 
-          <Box sx={{ display: 'flex', mt: 1 }}>
+          <Box sx={{ display: 'flex', mt: 1, gap: 1 }}>
             <TextField
               fullWidth
               variant="outlined"
-              placeholder="Type a message..."
+              placeholder="Ask me anything..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e)=>{ (e.key === 'Enter' || e.keyCode === 13) && chatResponse()}}
+              onKeyPress={(e) => e.key === 'Enter' && chatResponse()}
+              size="small"
               sx={{
-                input: { color: '#fff' },
-                fieldset: { borderColor: '#555' },
-                mr: 1,
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: 'divider' },
+                  '&:hover fieldset': { borderColor: 'rgba(45, 212, 191, 0.35)' },
+                  '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+                },
               }}
             />
-            <IconButton onClick={()=>chatResponse()} color="primary">
+            <IconButton onClick={chatResponse} sx={{ color: 'primary.main' }}>
               <SendIcon />
             </IconButton>
           </Box>

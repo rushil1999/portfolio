@@ -1,16 +1,19 @@
 import React from 'react';
-import {  Card, CardMedia, Grid,  CardContent, Typography, responsiveFontSizes, Chip, Button } from '@mui/material';
-import { useTheme  } from '@emotion/react';
+import { Card, CardMedia, Grid, CardContent, Typography, Chip, Button } from '@mui/material';
 
-
-// Individual Project Card
 const ProjectCard = ({ imageLink, projectName, summary, tags, link }) => {
-  let theme = useTheme();
-  theme = responsiveFontSizes(theme);
   return (
     <Card
       sx={{
-        maxWidth: 400
+        width: 360,
+        display: 'flex',
+        flexDirection: 'column',
+        transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
+        '&:hover': {
+          transform: 'translateY(-6px)',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.5)',
+          borderColor: 'rgba(45, 212, 191, 0.3)',
+        },
       }}
     >
       <CardMedia
@@ -20,48 +23,54 @@ const ProjectCard = ({ imageLink, projectName, summary, tags, link }) => {
         alt={projectName}
         sx={{ objectFit: 'cover' }}
       />
-      <CardContent>
-        <Typography variant="h5" sx={{ color: theme.palette.primary.main, mb: 1 }}>
+      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1.5, p: 3 }}>
+        <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
           {projectName}
         </Typography>
-        <Grid container  direction="row"  spacing={1}  p={1}>
-          {tags != null && tags.length > 0 && tags.map((tag, index) => (
-            <Grid item key={index}>
-            <Chip
-              key={index}
-              label={tag}
-              size="small"
-              sx={{
-                bgcolor: 'rgba(0, 212, 160, 0.15)',
-                color: '#aefcef',
-                border: '1px solid rgba(0, 212, 160, 0.4)',
-                fontFamily: 'Orbitron',
-                letterSpacing: '0.05em'
-              }}
-            />
-            </Grid>
-            
-          ))}
-        </Grid>
-        <Typography variant="body1" sx={{ color: theme.palette.primary.secondary, mb: 2 }}>
-          {summary}
+
+        {tags?.length > 0 && (
+          <Grid container spacing={0.75}>
+            {tags.map((tag, i) => (
+              <Grid item key={i}>
+                <Chip
+                  label={tag}
+                  size="small"
+                  sx={{
+                    bgcolor: 'rgba(45, 212, 191, 0.08)',
+                    color: 'primary.light',
+                    border: '1px solid rgba(45, 212, 191, 0.2)',
+                    fontSize: '0.72rem',
+                  }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        )}
+
+        <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7, flexGrow: 1 }}>
+          {Array.isArray(summary) ? summary.join(' ') : summary}
         </Typography>
-        {link != null && 
-          (<Button
-            variant="contained"
+
+        {link && (
+          <Button
+            variant="outlined"
             href={link}
             target="_blank"
             rel="noopener noreferrer"
+            size="small"
+            sx={{
+              alignSelf: 'flex-start',
+              borderColor: 'divider',
+              color: 'text.secondary',
+              '&:hover': { borderColor: 'primary.main', color: 'primary.main', bgcolor: 'transparent' },
+            }}
           >
             View Project
           </Button>
-          )
-        }
-        
+        )}
       </CardContent>
     </Card>
   );
 };
-
 
 export default ProjectCard;
