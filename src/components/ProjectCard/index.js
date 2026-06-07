@@ -23,7 +23,7 @@ const ProjectCard = ({ imageLink, projectName, summary, tags, link }) => {
         alt={projectName}
         sx={{ objectFit: 'cover' }}
       />
-      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1.5, p: 3 }}>
+      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1.5, p: 3, textAlign: 'left' }}>
         <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
           {projectName}
         </Typography>
