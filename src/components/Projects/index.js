@@ -38,7 +38,7 @@ const Project = () => {
         <SectionHeader title="Projects" />
       </motion.div>
 
-      <Grid container justifyContent="flex-start" spacing={4}>
+      <Grid container justifyContent="center" spacing={4}>
         {projectDetails.map((project, index) => {
           const { projectName, link, summary, tags } = project;
           return (
